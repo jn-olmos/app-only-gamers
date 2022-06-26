@@ -1,17 +1,15 @@
 import './scss/components/_app.scss';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Inicio from './routes/Inicio';
 
 function App() {
 	return (
 		<div className='App'>
-			<h1>title</h1>
-			<h2>title</h2>
-			<h3>title</h3>
-			<h4>title</h4>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, incidunt sequi.
-				Eos, debitis, officia consequuntur itaque voluptatum perspiciatis, veniam nihil odio
-				iure laboriosam autem corrupti consectetur fugiat recusandae numquam consequatur.
-			</p>
+			<BrowserRouter>
+				<Routes>
+					<Route path='/' element={<Inicio />}></Route>
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }

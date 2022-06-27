@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../scss/components/_estadisticas.scss';
+import '../../scss/components/Estadisticas/_estadisticas.scss';
 
 const Estadisticas = () => {
 	return (

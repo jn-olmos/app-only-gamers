@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../scss/components/CRUD/_navCRUD.scss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const NavCRUD = () => {
 	return (

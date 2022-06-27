@@ -13,6 +13,8 @@ const Footer = () => {
 				<p>Tecnictura Superior en Programación</p>
 			</div>
 
+			<span className='separador'></span>
+
 			<div className='integrantes'>
 				<p>Romero Olmos, Julio Nicolás</p>
 				<p>Ruiz, Silvio</p>

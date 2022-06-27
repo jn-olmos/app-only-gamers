@@ -13,9 +13,9 @@ const NavCRUD = () => {
 				Usuarios
 			</NavHashLink>
 
-			<NavHashLink className='enlace' to='/movimientos'>
+			{/* <NavHashLink className='enlace' to='/movimientos'>
 				Movimientos
-			</NavHashLink>
+			</NavHashLink> */}
 		</section>
 	);
 };

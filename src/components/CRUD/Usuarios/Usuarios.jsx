@@ -1,12 +1,8 @@
 import React from 'react';
-import TablaUsuarios from './TablaUsuarios';
+import CargarUsuario from './CargarUsuario';
 
 const Usuarios = () => {
-	return (
-		<div>
-			<TablaUsuarios />
-		</div>
-	);
+	return <CargarUsuario />;
 };
 
 export default Usuarios;

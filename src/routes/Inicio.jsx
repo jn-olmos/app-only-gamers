@@ -10,7 +10,7 @@ const Inicio = () => {
 	return (
 		<div className='inicio' id='inicio'>
 			<Header />
-			<Estadisticas />
+			{/* <Estadisticas /> */}
 
 			<section className='sectionCRUD' id='sectionCRUD'>
 				<NavCRUD />

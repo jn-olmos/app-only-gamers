@@ -22,11 +22,12 @@
     p {
       text-align: center;
       font-size: 12px;
+      margin: 0;
     }
   }
 
   .separador {
-    height: 70%;
+    height: 85%;
     border: solid 1px var(--gris-oscuro);
   }
 
@@ -37,5 +38,9 @@
     justify-content: space-between;
     align-items: flex-start;
     font-size: 12px;
+
+    p {
+      margin: 0;
+    }
   }
 }

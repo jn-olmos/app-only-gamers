@@ -1,10 +1,9 @@
-import '../../scss/components/CRUD/_crud.scss';
-import TablaProductos from './Productos/TablaProductos';
-
 import React from 'react';
+import '../../scss/components/CRUD/_crud.scss';
+import Productos from './Productos/Productos';
 
 const CRUD = () => {
-	return <TablaProductos />;
+	return <Productos />;
 };
 
 export default CRUD;

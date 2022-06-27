@@ -1,14 +1,21 @@
 import React from 'react';
 import '../../scss/components/CRUD/_navCRUD.scss';
+import { NavHashLink } from 'react-router-hash-link';
 
 const NavCRUD = () => {
 	return (
 		<section className='navCRUD'>
-			<div className='contenedor-enlaces'>
-				<a href='#sectionCRUD'>Productos</a>
-				<a href='#sectionCRUD'>Usuarios</a>
-				<a href='#sectionCRUD'>Movimientos</a>
-			</div>
+			<NavHashLink className='enlace' to='/productos'>
+				Productos
+			</NavHashLink>
+
+			<NavHashLink className='enlace' to='/usuarios'>
+				Usuarios
+			</NavHashLink>
+
+			<NavHashLink className='enlace' to='/movimientos'>
+				Movimientos
+			</NavHashLink>
 		</section>
 	);
 };

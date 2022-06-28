@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../../scss/components/CRUD/_tablaProductos.scss';
+import { BiEditAlt, BiTrashAlt } from 'react-icons/bi';
 
-const TablaProductos = ({ handleProducto, handleVista }) => {
+const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 	const [productos, setProductos] = useState([]);
 
 	const endpoint = 'https://api-onlygamers.herokuapp.com/api/productos';
@@ -18,8 +19,12 @@ const TablaProductos = ({ handleProducto, handleVista }) => {
 		getData();
 	}, []);
 
-	function eliminarProducto(id) {
-		axios.delete(endpoint + '/' + id).then((deleted) => {
+	function confirmacionEliminacion(productoAEliminar) {
+		handleEliminar(productoAEliminar, eliminarProducto);
+	}
+
+	function eliminarProducto(productoAEliminar) {
+		axios.delete(endpoint + '/' + productoAEliminar).then((deleted) => {
 			axios.get(endpoint).then((response) => {
 				getData();
 			});
@@ -79,16 +84,16 @@ const TablaProductos = ({ handleProducto, handleVista }) => {
 								className='boton-editar'
 								onClick={() => editarProducto(producto)}
 							>
-								Editar
+								<BiEditAlt />
 							</button>
 						</td>
 
 						<td className='boton-column'>
 							<button
 								className='boton-eliminar'
-								onClick={() => eliminarProducto(producto.id)}
+								onClick={() => confirmacionEliminacion(producto)}
 							>
-								Eliminar
+								<BiTrashAlt />
 							</button>
 						</td>
 					</tr>

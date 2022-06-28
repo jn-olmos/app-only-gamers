@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import '../../../scss/components/CRUD/_productos.scss';
+import '../../../scss/components/CRUD/_eliminarProducto.scss';
 import CargarProducto from './CargarProducto';
 import TablaProductos from './TablaProductos';
 import EditarProducto from './EditarProducto';
+import { BiArrowBack, BiAddToQueue, BiEditAlt, BiTrashAlt } from 'react-icons/bi';
 
 const Productos = () => {
-	const [vista, setVista] = useState('tabla'); // valores = 'tabla', 'cargar', 'editar'
+	const [vista, setVista] = useState('tabla'); // valores = 'tabla', 'cargar', 'editar', 'eliminar'
 	const [editarProducto, setEditarProducto] = useState({});
+	const [productoEliminar, setProductoEliminar] = useState({});
 
 	const handleVista = (nombrevista) => {
 		setVista(nombrevista);
@@ -14,6 +17,16 @@ const Productos = () => {
 
 	const handleProducto = (productoAEditar) => {
 		setEditarProducto(productoAEditar);
+	};
+
+	const handleEliminar = ({ id, nombre, descripcion }, method) => {
+		setProductoEliminar({ id, nombre, descripcion, method });
+		setVista('eliminar');
+	};
+
+	const confirmarEliminacion = (idProductoAEliminar) => {
+		productoEliminar.method(idProductoAEliminar);
+		setVista('tabla');
 	};
 
 	return (
@@ -25,9 +38,16 @@ const Productos = () => {
 					type='button'
 					onClick={() => handleVista('cargar')}
 				>
-					Cargar un nuevo producto
+					<BiAddToQueue color='white' />
+					Cargar Producto
 				</button>
-				<TablaProductos handleProducto={handleProducto} handleVista={handleVista} />
+				<div className='contendor-tabla'>
+					<TablaProductos
+						handleProducto={handleProducto}
+						handleVista={handleVista}
+						handleEliminar={handleEliminar}
+					/>
+				</div>
 			</div>
 
 			{/* VISTA CARGAR PRODUCTO */}
@@ -44,10 +64,10 @@ const Productos = () => {
 						type='button'
 						onClick={() => handleVista('tabla')}
 					>
-						Volver
+						<BiArrowBack color='white' type='solid' />
 					</button>
 
-					<h2 className='form-titulo'>Cargar Producto</h2>
+					<h2 className='form-titulo'>{<BiAddToQueue color='gray' />} Cargar Producto</h2>
 				</div>
 				<CargarProducto />
 			</div>
@@ -66,15 +86,55 @@ const Productos = () => {
 						type='button'
 						onClick={() => handleVista('tabla')}
 					>
-						Volver
+						<BiArrowBack color='white' type='solid' />
 					</button>
 
-					<h2 className='form-titulo'>Editar Producto</h2>
+					<h2 className='form-titulo'>{<BiEditAlt color='gray' />} Editar Producto</h2>
 				</div>
 
 				<EditarProducto producto={editarProducto} />
 			</div>
+
 			{/* VISTA ELIMINAR */}
+
+			<div
+				className={
+					vista === 'eliminar'
+						? 'contenedor-vista-eliminar-producto active'
+						: 'contenedor-vista-eliminar-producto'
+				}
+			>
+				<div className='header-eliminar-producto'>
+					<button
+						className='boton boton-regresar'
+						type='button'
+						onClick={() => handleVista('tabla')}
+					>
+						<BiArrowBack color='white' type='solid' />
+					</button>
+
+					<h2 className='form-titulo'>
+						{<BiTrashAlt color='gray' />} ¿Eliminar Producto?
+					</h2>
+				</div>
+
+				<div className='contenido-eliminar'>
+					<h3 className='texto-producto-eliminar'>{productoEliminar.nombre}</h3>
+					<p className='texto-producto-eliminar'>{productoEliminar.descripcion}</p>
+
+					<div className='contenedor-botones-eliminar'>
+						<button
+							className='boton-eliminar si'
+							onClick={() => confirmarEliminacion(productoEliminar.id)}
+						>
+							Si
+						</button>
+						<button className='boton-eliminar no' onClick={() => setVista('tabla')}>
+							No
+						</button>
+					</div>
+				</div>
+			</div>
 		</section>
 	);
 };

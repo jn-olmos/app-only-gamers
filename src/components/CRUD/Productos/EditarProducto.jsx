@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import '../../../scss/components/CRUD/_editarProductos.scss';
-import { calculateNewValue } from '@testing-library/user-event/dist/utils';
 
-export default function EditarProducto({ producto }) {
+export default function EditarProducto(producto) {
 	const { register, handleSubmit } = useForm();
 
 	const onSubmit = ({
@@ -38,7 +38,7 @@ export default function EditarProducto({ producto }) {
 	};
 
 	return (
-		<form className='form-editar-producto' onSubmit={handleSubmit(onSubmit)}>
+		<form className='form-editar-producto' onSubmit={() => handleSubmit(onSubmit)}>
 			<div className='form-inputs-contenedor'>
 				{/* CAMPO NOMBRE */}
 				<div className='contenedor-nombre'>
@@ -49,7 +49,7 @@ export default function EditarProducto({ producto }) {
 						className='nombre-input'
 						type='text'
 						{...register('nombre')}
-						value={producto.nombre || ''}
+						defaultValue={producto.nombre}
 					/>
 				</div>
 
@@ -62,7 +62,6 @@ export default function EditarProducto({ producto }) {
 						className='descripcion-input'
 						type='text'
 						{...register('descripcion')}
-						value={producto.descripcion || ''}
 					></input>
 				</div>
 
@@ -71,12 +70,7 @@ export default function EditarProducto({ producto }) {
 					<label className='stock-label' from='stock-input'>
 						stock
 					</label>
-					<input
-						className='stock-input'
-						type='number'
-						{...register('stock')}
-						value={producto.stock || ''}
-					></input>
+					<input className='stock-input' type='number' {...register('stock')}></input>
 				</div>
 
 				{/* CAMPO STOCK MINIMO */}
@@ -88,7 +82,6 @@ export default function EditarProducto({ producto }) {
 						className='stockMinimo-input'
 						type='number'
 						{...register('stockMinimo')}
-						value={producto.stockMinimo || ''}
 					></input>
 				</div>
 
@@ -101,7 +94,6 @@ export default function EditarProducto({ producto }) {
 						className='contenedor-compra-input'
 						type='number'
 						{...register('compra')}
-						value={producto.compra || ''}
 					></input>
 				</div>
 
@@ -110,12 +102,7 @@ export default function EditarProducto({ producto }) {
 					<label className='iva-label' from='iva-input'>
 						iva
 					</label>
-					<input
-						className='iva-input'
-						type='number'
-						{...register('iva')}
-						value={producto.iva || ''}
-					></input>
+					<input className='iva-input' type='number' {...register('iva')}></input>
 				</div>
 
 				{/* CAMPO UTILIDAD */}
@@ -127,7 +114,6 @@ export default function EditarProducto({ producto }) {
 						className='utilidad-input'
 						type='number'
 						{...register('utilidad')}
-						value={producto.utilidad || ''}
 					></input>
 				</div>
 
@@ -136,12 +122,7 @@ export default function EditarProducto({ producto }) {
 					<label className='venta-label' from='venta-input'>
 						venta
 					</label>
-					<input
-						className='venta-input'
-						type='number'
-						{...register('venta')}
-						value={producto.venta || ''}
-					></input>
+					<input className='venta-input' type='number' {...register('venta')}></input>
 				</div>
 
 				{/* CAMPO CATEGORIA */}
@@ -150,14 +131,7 @@ export default function EditarProducto({ producto }) {
 						categoria
 					</label>
 
-					<select
-						className='categoria-input'
-						{...register('categoria')}
-						defaultValue={'DEFAULT'}
-					>
-						<option value='DEFAULT' disabled>
-							Seleccionar una Categoría
-						</option>
+					<select className='categoria-input' {...register('categoria')}>
 						<option>Consolas</option>
 						<option>Hardware</option>
 						<option>Notebooks</option>

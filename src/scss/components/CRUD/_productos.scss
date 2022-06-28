@@ -1,23 +1,20 @@
 .productos {
   margin-top: 0;
   position: relative;
-  overflow-x: hidden;
-  overflow-y: scroll;
-
+  overflow: hidden;
+  
   .contenedor-vista-producto {
     z-index: 99;
-    width: 100%;
-    height: 100%;
     transition: transform ease-in-out .5s;
     position: absolute;
     inset: 0;
-    padding: 1rem .5rem 0 1.5rem ;    
+    overflow-y: scroll;
+    padding: 1rem 0 0 2rem ;
+    height: 70vh;
   }
 
-  .contenedor-vista-cargar-producto, .contenedor-vista-editar-producto {
+  .contenedor-vista-cargar-producto, .contenedor-vista-editar-producto, .contenedor-vista-eliminar-producto {
     z-index: 101;
-    width: 100%;
-    height: 100%;
     transform: translateX(100%);
     transition: transform ease-in-out .5s;
     position: fixed;
@@ -26,17 +23,24 @@
     background-color: var(--blanco);
     border-left: solid 5px var(--gris-claro);
   }
+
+  .contendor-tabla {
+    height: 50%;
+  }
   
 
   /* botones */
   .boton {
-    // margin: 1rem 0 0;
     border: none;
     height: 40px;
-    // width: 300px;
     color: var(--blanco);
-    font-size: 16px;
-    padding: 0 2rem;
+    font-size: 18px;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .5rem;
+    border-radius: 5px;
   }
   .boton-cargar-producto {
     background-color: var(--green);

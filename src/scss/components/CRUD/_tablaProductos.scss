@@ -15,27 +15,34 @@
     }
     
   }
-
+  
+  .num {
+    text-align: center;
+  }
   .nombre-column {
-    min-width: 100px;
+    width: 300px;
   }
   .descripcion-column {
-    min-width: 120px;
+    width: 250px;
   }
   .categoria-column {
     width: 90px;
   }
-  .num {
-    text-align: center;
+  .stock-minimo-column {
+    width: 70px;
+  }
+  .iva-column {
+    width: 40px;
   }
   
   tbody {
-
+    
     tr {
-      height: 50px;
+      height: 75px;
       border-bottom: 1px solid var(--gris-claro);
-
+      
       td {
+        padding: 0 10px;
         min-width: 40px;
       }
     }
@@ -49,11 +56,20 @@
   .boton-column {
     
     button {
-      background: blue;
       color: white;
-      height: 40px;
+      height: 100%;
       width: 40px;
       border: none;
+      border-radius: 5px;
+      padding: .5rem;
+      font-size: 16px;
+    }
+
+    .boton-editar {
+      background: var(--gris-oscuro);
+    }
+    .boton-eliminar {
+      background: #a0163b;
     }
   }
 }

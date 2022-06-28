@@ -12,10 +12,6 @@ const NavCRUD = () => {
 			<NavHashLink className='enlace' to='/usuarios'>
 				Usuarios
 			</NavHashLink>
-
-			{/* <NavHashLink className='enlace' to='/movimientos'>
-				Movimientos
-			</NavHashLink> */}
 		</section>
 	);
 };

@@ -1,10 +1,21 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import '../../../scss/components/CRUD/_editarProductos.scss';
 
-export default function EditarProducto(producto) {
-	const { register, handleSubmit } = useForm();
+export default function EditarProducto({ producto, handleVista }) {
+	const { register, handleSubmit, setValue } = useForm({
+		defaultValue: {
+			nombre: producto.nombre,
+			descripcion: producto.descripcion,
+			stock: producto.stock,
+			stockMinimo: producto.stockMinimo,
+			compra: producto.compra,
+			iva: producto.iva,
+			utilidad: producto.utilidad,
+			venta: producto.venta,
+			categoria: producto.categoria,
+		},
+	});
 
 	const onSubmit = ({
 		nombre,
@@ -35,10 +46,11 @@ export default function EditarProducto(producto) {
 			.catch(function (error) {
 				console.log(error);
 			});
+		handleVista('tabla');
 	};
 
 	return (
-		<form className='form-editar-producto' onSubmit={() => handleSubmit(onSubmit)}>
+		<form className='form-editar-producto' onSubmit={handleSubmit(onSubmit)}>
 			<div className='form-inputs-contenedor'>
 				{/* CAMPO NOMBRE */}
 				<div className='contenedor-nombre'>
@@ -49,7 +61,7 @@ export default function EditarProducto(producto) {
 						className='nombre-input'
 						type='text'
 						{...register('nombre')}
-						defaultValue={producto.nombre}
+						value={setValue('nombre', producto.nombre)}
 					/>
 				</div>
 
@@ -62,6 +74,7 @@ export default function EditarProducto(producto) {
 						className='descripcion-input'
 						type='text'
 						{...register('descripcion')}
+						value={setValue('descripcion', producto.descripcion)}
 					></input>
 				</div>
 
@@ -70,7 +83,12 @@ export default function EditarProducto(producto) {
 					<label className='stock-label' from='stock-input'>
 						stock
 					</label>
-					<input className='stock-input' type='number' {...register('stock')}></input>
+					<input
+						className='stock-input'
+						type='number'
+						{...register('stock')}
+						value={setValue('stock', producto.stock)}
+					></input>
 				</div>
 
 				{/* CAMPO STOCK MINIMO */}
@@ -82,6 +100,7 @@ export default function EditarProducto(producto) {
 						className='stockMinimo-input'
 						type='number'
 						{...register('stockMinimo')}
+						value={setValue('stockMinimo', producto.stockMinimo)}
 					></input>
 				</div>
 
@@ -94,6 +113,7 @@ export default function EditarProducto(producto) {
 						className='contenedor-compra-input'
 						type='number'
 						{...register('compra')}
+						value={setValue('compra', producto.compra)}
 					></input>
 				</div>
 
@@ -102,7 +122,12 @@ export default function EditarProducto(producto) {
 					<label className='iva-label' from='iva-input'>
 						iva
 					</label>
-					<input className='iva-input' type='number' {...register('iva')}></input>
+					<input
+						className='iva-input'
+						type='number'
+						{...register('iva')}
+						value={setValue('iva', producto.iva)}
+					></input>
 				</div>
 
 				{/* CAMPO UTILIDAD */}
@@ -114,6 +139,7 @@ export default function EditarProducto(producto) {
 						className='utilidad-input'
 						type='number'
 						{...register('utilidad')}
+						value={setValue('utilidad', producto.utilidad)}
 					></input>
 				</div>
 
@@ -122,7 +148,12 @@ export default function EditarProducto(producto) {
 					<label className='venta-label' from='venta-input'>
 						venta
 					</label>
-					<input className='venta-input' type='number' {...register('venta')}></input>
+					<input
+						className='venta-input'
+						type='number'
+						{...register('venta')}
+						value={('venta', producto.venta)}
+					></input>
 				</div>
 
 				{/* CAMPO CATEGORIA */}
@@ -131,7 +162,14 @@ export default function EditarProducto(producto) {
 						categoria
 					</label>
 
-					<select className='categoria-input' {...register('categoria')}>
+					<select
+						className='categoria-input'
+						{...register('categoria')}
+						defaultValue={'DEFAULT'}
+					>
+						<option value='DEFAULT' disabled>
+							Seleccionar una Categoría
+						</option>
 						<option>Consolas</option>
 						<option>Hardware</option>
 						<option>Notebooks</option>

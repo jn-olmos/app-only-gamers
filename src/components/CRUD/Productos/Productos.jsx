@@ -4,10 +4,13 @@ import '../../../scss/components/CRUD/_eliminarProducto.scss';
 import CargarProducto from './CargarProducto';
 import TablaProductos from './TablaProductos';
 import EditarProducto from './EditarProducto';
+import StockMinimo from './StockMinimo';
 import { BiArrowBack, BiAddToQueue, BiEditAlt, BiTrashAlt } from 'react-icons/bi';
 
 const Productos = () => {
-	const [vista, setVista] = useState('tabla'); // valores = 'tabla', 'cargar', 'editar', 'eliminar'
+	const [vista, setVista] = useState('tabla');
+	// valores = 'tabla', 'cargar', 'editar', 'eliminar'
+
 	const [editarProducto, setEditarProducto] = useState({});
 	const [productoEliminar, setProductoEliminar] = useState({});
 
@@ -33,6 +36,7 @@ const Productos = () => {
 		<section id='productos' className='productos'>
 			{/* VISTA PRODUCTO */}
 			<div className='contenedor-vista-producto'>
+				<StockMinimo />
 				<button
 					className='boton boton-cargar-producto'
 					type='button'
@@ -92,7 +96,7 @@ const Productos = () => {
 					<h2 className='form-titulo'>{<BiEditAlt color='gray' />} Editar Producto</h2>
 				</div>
 
-				<EditarProducto producto={editarProducto} />
+				<EditarProducto producto={editarProducto} handleVista={handleVista} />
 			</div>
 
 			{/* VISTA ELIMINAR */}

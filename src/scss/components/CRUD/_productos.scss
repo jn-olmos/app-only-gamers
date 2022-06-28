@@ -2,15 +2,18 @@
   margin-top: 0;
   position: relative;
   overflow: hidden;
+  padding: 1rem 0 0 2rem ;
   
   .contenedor-vista-producto {
     z-index: 99;
     transition: transform ease-in-out .5s;
     position: absolute;
     inset: 0;
+    overflow-x: hidden;
     overflow-y: scroll;
-    padding: 1rem 0 0 2rem ;
-    height: 70vh;
+    padding: .2rem 0 0 2rem ;
+    height: 77vh;
+    margin-top: 1rem;
   }
 
   .contenedor-vista-cargar-producto, .contenedor-vista-editar-producto, .contenedor-vista-eliminar-producto {
@@ -27,7 +30,6 @@
   .contendor-tabla {
     height: 50%;
   }
-  
 
   /* botones */
   .boton {
@@ -44,6 +46,12 @@
   }
   .boton-cargar-producto {
     background-color: var(--green);
+    width: 300px;
+    transition: transform ease-in-out .3s;
+
+    &:hover {
+      transform: scale(1.02);
+    }
   }
   .boton-regresar {
     background-color: var(--rojo-suave);

@@ -60,8 +60,39 @@ const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 						<td className='nombre-column'>{producto.nombre}</td>
 						<td className='descripcion-column'>{producto.descripcion}</td>
 						<td className='categoria-column'>{producto.categoria}</td>
-						<td className='stock-column num'>{producto.stock}</td>
-						<td className='stock-minimo-column num'>{producto.stockMinimo}</td>
+						<td
+							className='stock-column num'
+							style={
+								producto.stock < producto.stockMinimo
+									? {
+											color: 'white',
+											fontWeight: 'bold',
+											fontSize: '16px',
+											backgroundColor: 'var(--yellow)',
+											borderRight: 'solid 1px white',
+											// borderTop: 'solid .5px white',
+									  }
+									: null
+							}
+						>
+							{producto.stock}
+						</td>
+						<td
+							className='stock-minimo-column num'
+							style={
+								producto.stock < producto.stockMinimo
+									? {
+											color: 'white',
+											fontWeight: 'bold',
+											fontSize: '16px',
+											backgroundColor: 'var(--yellow)',
+											// borderTop: 'solid .5px white',
+									  }
+									: null
+							}
+						>
+							{producto.stockMinimo}
+						</td>
 						<td className='compra-column num'>
 							{new Intl.NumberFormat('es-ES', {
 								style: 'currency',

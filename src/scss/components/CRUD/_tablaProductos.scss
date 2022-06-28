@@ -1,0 +1,55 @@
+.tabla-productos {
+  width: 100%;
+  margin: 1rem 0;
+  
+  thead {
+    th {
+      background-color: var(--rojo-suave);
+      height: 50px;
+      color: white;
+      font-family: var(--title-font);
+      padding-left: .1rem;
+      text-transform: uppercase;
+      border-right: solid 1px #e1e1e150;
+    }
+    
+  }
+
+  .nombre-column {
+    min-width: 100px;
+  }
+  .descripcion-column {
+    min-width: 120px;
+  }
+  .categoria-column {
+    width: 90px;
+  }
+  
+  tbody {
+
+    tr {
+      height: 50px;
+      border-bottom: 1px solid var(--gris-claro);
+
+      td {
+        min-width: 40px;
+      }
+    }
+
+    tr:hover {
+      background: rgba($color: #EC255A, $alpha: .05);
+    }
+    
+  }
+
+  .boton-column {
+    
+    button {
+      background: blue;
+      color: white;
+      height: 40px;
+      width: 40px;
+      border: none;
+    }
+  }
+}

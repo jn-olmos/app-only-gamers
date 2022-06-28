@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-//import getProductos from '../../../services/ProductoService';
 import axios from 'axios';
+import '../../../scss/components/CRUD/_tablaProductos.scss';
 
 const TablaProductos = () => {
 	const [productos, setProductos] = useState([]);
@@ -19,46 +19,45 @@ const TablaProductos = () => {
 	}, []);
 
 	return (
-		<>
-			<table>
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>nombre</th>
-						<th>descripcion</th>
-						<th>categoria</th>
-						<th>stock</th>
-						<th>stock minimo</th>
-						<th>compra</th>
-						<th>iva</th>
-						<th>utilidad</th>
-						<th>venta</th>
+		<table className='tabla-productos'>
+			<thead>
+				<tr>
+					<th className='id-column'>ID</th>
+					<th className='nombre-column'>nombre</th>
+					<th className='descripcion-column'>descripcion</th>
+					<th className='categoria-column'>categoria</th>
+					<th className='stock-column'>stock</th>
+					<th className='stock-minimo-column'>stock min.</th>
+					<th className='compra-column'>compra</th>
+					<th className='iva-column'>iva</th>
+					<th className='utilidad-column'>utilidad</th>
+					<th className='venta-column'>venta</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{productos.map((producto) => (
+					<tr key={producto.id}>
+						<td>{producto.id.slice(-5)}</td>
+						<td>{producto.nombre}</td>
+						<td>{producto.descripcion}</td>
+						<td>{producto.categoria}</td>
+						<td>{producto.stock}</td>
+						<td>{producto.stockMinimo}</td>
+						<td>{producto.compra}</td>
+						<td>{producto.iva}</td>
+						<td>{producto.utilidad}</td>
+						<td>{producto.venta}</td>
+						<td className='boton-column'>
+							<button className='boton-editar'>editar</button>
+						</td>
+						<td className='boton-column'>
+							<button className='boton-eliminar'>eliminar</button>
+						</td>
 					</tr>
-				</thead>
-				<tbody>
-					{productos.map((producto) => (
-						<tr key={producto.id}>
-							<td>{producto.id}</td>
-							<td>{producto.nombre}</td>
-							<td>{producto.descripcion}</td>
-							<td>{producto.categoria}</td>
-							<td>{producto.stock}</td>
-							<td>{producto.stockMinimo}</td>
-							<td>{producto.compra}</td>
-							<td>{producto.iva}</td>
-							<td>{producto.utilidad}</td>
-							<td>{producto.venta}</td>
-							<td>
-								<button>editar</button>
-							</td>
-							<td>
-								<button>eliminar</button>
-							</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
-		</>
+				))}
+			</tbody>
+		</table>
 	);
 };
 

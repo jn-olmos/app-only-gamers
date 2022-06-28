@@ -21,7 +21,7 @@ function App() {
 					<Route
 						path='*'
 						element={
-							<main style={{ padding: '1rem' }}>
+							<main style={{ padding: '2rem' }}>
 								<p>Página no encontrada.</p>
 							</main>
 						}

@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import '../../../scss/components/CRUD/_cargarProducto.scss';
 
-export default function CargarProducto() {
+export default function CargarProducto({ handleVista }) {
 	const { register, handleSubmit } = useForm();
 
 	const onSubmit = ({
@@ -34,6 +34,8 @@ export default function CargarProducto() {
 			.catch(function (error) {
 				console.log(error);
 			});
+
+		handleVista('tabla');
 	};
 
 	return (

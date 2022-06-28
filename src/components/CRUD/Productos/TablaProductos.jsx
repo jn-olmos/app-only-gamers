@@ -17,7 +17,7 @@ const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 
 	useEffect(() => {
 		getData();
-	}, []);
+	}, [productos]);
 
 	function confirmacionEliminacion(productoAEliminar) {
 		handleEliminar(productoAEliminar, eliminarProducto);

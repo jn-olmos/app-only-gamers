@@ -73,7 +73,7 @@ const Productos = () => {
 
 					<h2 className='form-titulo'>{<BiAddToQueue color='gray' />} Cargar Producto</h2>
 				</div>
-				<CargarProducto />
+				<CargarProducto handleVista={handleVista} />
 			</div>
 
 			{/* VISTA EDITAR PRODUCTO */}
@@ -133,6 +133,7 @@ const Productos = () => {
 						>
 							Si
 						</button>
+
 						<button className='boton-eliminar no' onClick={() => setVista('tabla')}>
 							No
 						</button>

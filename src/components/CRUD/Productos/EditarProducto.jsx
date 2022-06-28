@@ -5,15 +5,15 @@ import '../../../scss/components/CRUD/_editarProductos.scss';
 export default function EditarProducto({ producto, handleVista }) {
 	const { register, handleSubmit, setValue } = useForm({
 		defaultValue: {
-			nombre: producto.nombre,
-			descripcion: producto.descripcion,
-			stock: producto.stock,
-			stockMinimo: producto.stockMinimo,
-			compra: producto.compra,
-			iva: producto.iva,
-			utilidad: producto.utilidad,
-			venta: producto.venta,
-			categoria: producto.categoria,
+			nombre: '',
+			descripcion: '',
+			stock: '',
+			stockMinimo: '',
+			compra: '',
+			iva: '',
+			utilidad: '',
+			venta: '',
+			categoria: '',
 		},
 	});
 
@@ -152,7 +152,7 @@ export default function EditarProducto({ producto, handleVista }) {
 						className='venta-input'
 						type='number'
 						{...register('venta')}
-						value={('venta', producto.venta)}
+						value={setValue('venta', producto.venta)}
 					></input>
 				</div>
 
@@ -165,11 +165,11 @@ export default function EditarProducto({ producto, handleVista }) {
 					<select
 						className='categoria-input'
 						{...register('categoria')}
-						defaultValue={'DEFAULT'}
+						defaultValue={setValue('categoria', producto.categoria)}
 					>
-						<option value='DEFAULT' disabled>
+						{/* <option value='DEFAULT' disabled>
 							Seleccionar una Categoría
-						</option>
+						</option> */}
 						<option>Consolas</option>
 						<option>Hardware</option>
 						<option>Notebooks</option>

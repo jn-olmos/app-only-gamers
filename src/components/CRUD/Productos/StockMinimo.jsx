@@ -4,9 +4,23 @@ import axios from 'axios';
 
 export default function StockMinimo() {
 	const [alertaStock, setAlertaStock] = useState([]);
+	const [productos, setProductos] = useState([]);
+
+	const endpoint = 'https://api-onlygamers.herokuapp.com/api/productos';
+
+	const getData = async () => {
+		await axios.get(endpoint).then((response) => {
+			const data = response.data;
+			setProductos(data);
+		});
+	};
 
 	useEffect(() => {
-		axios.get('https://api-onlygamers.herokuapp.com/api/productos').then(({ data }) => {
+		getData();
+	}, [productos]);
+
+	useEffect(() => {
+		axios.get(endpoint).then(({ data }) => {
 			let prevAlertaStock = [];
 
 			for (let producto of data) {

@@ -18,15 +18,15 @@ export default function CargarProducto({ handleVista }) {
 	}) => {
 		axios
 			.post('https://api-onlygamers.herokuapp.com/api/productos', {
-				nombre,
-				descripcion,
+				nombre: nombre.toLowerCase(),
+				descripcion: descripcion.toLowerCase(),
 				stock,
 				stockMinimo,
 				compra,
 				iva,
 				utilidad,
 				venta,
-				categoria,
+				categoria: categoria.toLowerCase(),
 			})
 			.then(function (response) {
 				console.log(response.data);

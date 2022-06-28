@@ -41,9 +41,9 @@ const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 			<thead>
 				<tr>
 					{/* <th className='id-column'>ID</th> */}
-					<th className='nombre-column'>nombre</th>
-					<th className='descripcion-column'>descripcion</th>
-					<th className='categoria-column'>categoria</th>
+					<th className='nombre-column text'>nombre</th>
+					<th className='descripcion-column text'>descripcion</th>
+					<th className='categoria-column text'>categoria</th>
 					<th className='stock-column num'>stock</th>
 					<th className='stock-minimo-column num'>stock min.</th>
 					<th className='compra-column num'>compra</th>
@@ -102,6 +102,7 @@ const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 						<td className='iva-column num'>{producto.iva}%</td>
 						<td className='utilidad-column num'>{producto.utilidad}%</td>
 						<td className='venta-column num'>
+							${' '}
 							{new Intl.NumberFormat('es-ES', {
 								style: 'currency',
 								currency: 'ARS',

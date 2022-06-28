@@ -20,6 +20,9 @@
     
   }
   
+  .text {
+    padding-left: 10px;
+  }
   .num {
     text-align: center;
   }
@@ -51,6 +54,7 @@
       td {
         padding: 0 10px;
         min-width: 40px;
+        text-transform: capitalize;
       }
     }
 
@@ -77,7 +81,7 @@
       background: var(--gris-oscuro);
     }
     .boton-eliminar {
-      background: #a0163b;
+      background: var(--rojo-suave);
     }
   }
 }

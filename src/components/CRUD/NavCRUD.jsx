@@ -9,9 +9,9 @@ const NavCRUD = () => {
 				Productos
 			</NavHashLink>
 
-			<NavHashLink className='enlace' to='/usuarios'>
+			{/* <NavHashLink className='enlace' to='/usuarios'>
 				Usuarios
-			</NavHashLink>
+			</NavHashLink> */}
 		</section>
 	);
 };

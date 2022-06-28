@@ -1,6 +1,7 @@
 .tabla-productos {
   width: 100%;
   margin: 1rem 0;
+  padding: 0 0 2rem;
   
   thead {
     th {
@@ -23,6 +24,9 @@
   }
   .categoria-column {
     width: 90px;
+  }
+  .num {
+    text-align: center;
   }
   
   tbody {

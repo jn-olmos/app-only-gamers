@@ -1,7 +1,8 @@
 .productos {
-  padding: .5rem 1.5rem;
+  margin-top: 0;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   .contenedor-vista-producto {
     z-index: 99;
@@ -10,28 +11,26 @@
     transition: transform ease-in-out .5s;
     position: absolute;
     inset: 0;
-    padding: 3rem;
+    padding: 1rem .5rem 0 1.5rem ;    
   }
 
-  .contenedor-vista-cargar-producto {
-    z-index: 100;
+  .contenedor-vista-cargar-producto, .contenedor-vista-editar-producto {
+    z-index: 101;
     width: 100%;
     height: 100%;
     transform: translateX(100%);
     transition: transform ease-in-out .5s;
-    position: absolute;
-    inset: 0;
+    position: fixed;
+    inset: 100px 0 0;
     padding: 1rem 2rem;
     background-color: var(--blanco);
     border-left: solid 5px var(--gris-claro);
   }
   
-  .contenedor-vista-cargar-producto.active {
-    transform: translateX(0);
-  }
 
+  /* botones */
   .boton {
-    margin: 1rem 0;
+    // margin: 1rem 0 0;
     border: none;
     height: 40px;
     // width: 300px;
@@ -43,7 +42,7 @@
     background-color: var(--green);
   }
   .boton-regresar {
-    background-color: var(--gris-oscuro);
-    margin-bottom: 3rem;
+    background-color: var(--rojo-suave);
+    // margin-bottom: 3rem;
   }
 }

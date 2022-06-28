@@ -1,7 +1,10 @@
 .inicio {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 100px auto 100px;
+  
   .sectionCRUD {
     display: grid;
-    grid-template-columns: 1fr 7fr;
-    height: 80vh;
+    grid-template-columns: 150px auto;
   }
 }

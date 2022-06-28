@@ -10,7 +10,7 @@ const Footer = () => {
 					src={require('../../assets/images/logo-utn.png')}
 					alt='logo utn'
 				/>
-				<p>Tecnictura Superior en Programación</p>
+				{/* <p>Tecnictura Superior en Programación</p> */}
 			</div>
 
 			<span className='separador'></span>

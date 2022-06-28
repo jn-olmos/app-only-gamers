@@ -1,5 +1,5 @@
 .footer {
-  height: 110px;
+  height: 100px;
   background: var(--negro);
   display: flex;
   align-items: center;
@@ -27,17 +27,18 @@
   }
 
   .separador {
-    height: 85%;
-    border: solid 1px var(--gris-oscuro);
+    height: 70%;
+    width: 1px;
+    background: var(--rojo-suave);
   }
 
   .integrantes {
     height: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
-    font-size: 12px;
+    font-size: 10px;
 
     p {
       margin: 0;

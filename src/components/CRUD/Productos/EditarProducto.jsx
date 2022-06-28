@@ -1,8 +1,9 @@
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import '../../../scss/components/CRUD/_cargarProducto.scss';
+import '../../../scss/components/CRUD/_editarProductos.scss';
+import { calculateNewValue } from '@testing-library/user-event/dist/utils';
 
-export default function CargarProducto() {
+export default function EditarProducto({ producto }) {
 	const { register, handleSubmit } = useForm();
 
 	const onSubmit = ({
@@ -17,7 +18,7 @@ export default function CargarProducto() {
 		categoria,
 	}) => {
 		axios
-			.post('https://api-onlygamers.herokuapp.com/api/productos', {
+			.put(`https://api-onlygamers.herokuapp.com/api/productos/${producto.id}`, {
 				nombre,
 				descripcion,
 				stock,
@@ -37,7 +38,7 @@ export default function CargarProducto() {
 	};
 
 	return (
-		<form className='form-producto' onSubmit={handleSubmit(onSubmit)}>
+		<form className='form-editar-producto' onSubmit={handleSubmit(onSubmit)}>
 			<div className='form-inputs-contenedor'>
 				{/* CAMPO NOMBRE */}
 				<div className='contenedor-nombre'>
@@ -47,9 +48,9 @@ export default function CargarProducto() {
 					<input
 						className='nombre-input'
 						type='text'
-						required
 						{...register('nombre')}
-					></input>
+						value={producto.nombre || ''}
+					/>
 				</div>
 
 				{/* CAMPO DESCRIPCION */}
@@ -60,8 +61,8 @@ export default function CargarProducto() {
 					<input
 						className='descripcion-input'
 						type='text'
-						required
 						{...register('descripcion')}
+						value={producto.descripcion || ''}
 					></input>
 				</div>
 
@@ -73,8 +74,8 @@ export default function CargarProducto() {
 					<input
 						className='stock-input'
 						type='number'
-						required
 						{...register('stock')}
+						value={producto.stock || ''}
 					></input>
 				</div>
 
@@ -86,8 +87,8 @@ export default function CargarProducto() {
 					<input
 						className='stockMinimo-input'
 						type='number'
-						required
 						{...register('stockMinimo')}
+						value={producto.stockMinimo || ''}
 					></input>
 				</div>
 
@@ -99,8 +100,8 @@ export default function CargarProducto() {
 					<input
 						className='contenedor-compra-input'
 						type='number'
-						required
 						{...register('compra')}
+						value={producto.compra || ''}
 					></input>
 				</div>
 
@@ -112,8 +113,8 @@ export default function CargarProducto() {
 					<input
 						className='iva-input'
 						type='number'
-						required
 						{...register('iva')}
+						value={producto.iva || ''}
 					></input>
 				</div>
 
@@ -125,8 +126,8 @@ export default function CargarProducto() {
 					<input
 						className='utilidad-input'
 						type='number'
-						required
 						{...register('utilidad')}
+						value={producto.utilidad || ''}
 					></input>
 				</div>
 
@@ -138,8 +139,8 @@ export default function CargarProducto() {
 					<input
 						className='venta-input'
 						type='number'
-						required
 						{...register('venta')}
+						value={producto.venta || ''}
 					></input>
 				</div>
 
@@ -151,7 +152,6 @@ export default function CargarProducto() {
 
 					<select
 						className='categoria-input'
-						required
 						{...register('categoria')}
 						defaultValue={'DEFAULT'}
 					>
@@ -167,7 +167,7 @@ export default function CargarProducto() {
 				</div>
 			</div>
 
-			<input className='boton-submit' type='submit' value='Cargar Producto' />
+			<input className='boton-submit' type='submit' value='Editar Producto' />
 		</form>
 	);
 }

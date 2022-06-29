@@ -1,17 +1,18 @@
 import React from 'react';
 import '../../scss/components/CRUD/_navCRUD.scss';
-import { NavHashLink } from 'react-router-hash-link';
+// import { NavHashLink } from 'react-router-hash-link';
+import { NavLink } from 'react-router-dom';
 
 const NavCRUD = () => {
 	return (
 		<section className='navCRUD'>
-			<NavHashLink className='enlace' to='/productos'>
+			<NavLink to='/productos' className='enlace'>
 				Productos
-			</NavHashLink>
+			</NavLink>
 
-			<NavHashLink className='enlace' to='/usuarios'>
+			<NavLink to='/usuarios' className='enlace'>
 				Usuarios
-			</NavHashLink>
+			</NavLink>
 		</section>
 	);
 };

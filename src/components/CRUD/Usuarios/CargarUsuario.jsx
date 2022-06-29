@@ -3,9 +3,25 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
 export default function CargarUsuario({ handleVista }) {
-	const { register, handleSubmit } = useForm();
+	const { register, handleSubmit, setValue } = useForm({
+		defaultValue: {
+			apellido: '',
+			nombre: '',
+			nickname: '',
+			password: '',
+			email: '',
+			telefono: '',
+		},
+	});
 
-	const onSubmit = ({ apellido, nombre, nickname, password, email, telefono }) => {
+	const onSubmit = ({
+		apellido,
+		nombre,
+		nickname,
+		password,
+		email,
+		telefono,
+	}) => {
 		axios
 			.post('https://api-onlygamers.herokuapp.com/api/usuarios', {
 				apellido,
@@ -38,7 +54,7 @@ export default function CargarUsuario({ handleVista }) {
 						type='text'
 						required
 						{...register('apellido')}
-					></input>
+						value={setValue('apellido')}></input>
 				</div>
 
 				{/* CAMPO NOMBRE */}
@@ -51,7 +67,7 @@ export default function CargarUsuario({ handleVista }) {
 						type='text'
 						required
 						{...register('nombre')}
-					></input>
+						value={setValue('nombre')}></input>
 				</div>
 
 				{/* CAMPO NICKNAME */}
@@ -64,7 +80,7 @@ export default function CargarUsuario({ handleVista }) {
 						type='text'
 						required
 						{...register('nickname')}
-					></input>
+						value={setValue('nickname')}></input>
 				</div>
 
 				{/* CAMPO PASSWORD */}
@@ -77,7 +93,7 @@ export default function CargarUsuario({ handleVista }) {
 						type='password'
 						required
 						{...register('password')}
-					></input>
+						value={setValue('password')}></input>
 				</div>
 
 				{/* CAMPO EMAIL */}
@@ -90,7 +106,7 @@ export default function CargarUsuario({ handleVista }) {
 						type='email'
 						required
 						{...register('email')}
-					></input>
+						value={setValue('email')}></input>
 				</div>
 
 				{/* CAMPO TELEFONO */}
@@ -103,7 +119,7 @@ export default function CargarUsuario({ handleVista }) {
 						type='number'
 						required
 						{...register('telefono')}
-					></input>
+						value={setValue('telefono')}></input>
 				</div>
 			</div>
 

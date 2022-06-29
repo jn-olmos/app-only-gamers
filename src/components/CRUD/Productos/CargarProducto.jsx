@@ -3,7 +3,18 @@ import axios from 'axios';
 import '../../../scss/components/CRUD/Productos/_cargarProducto.scss';
 
 export default function CargarProducto({ handleVista }) {
-	const { register, handleSubmit } = useForm();
+	const { register, handleSubmit, setValue } = useForm({
+		defaultValue: {
+			nombre: '',
+			descripcion: '',
+			stock: '',
+			stockMinimo: '',
+			compra: '',
+			iva: '',
+			utilidad: '',
+			venta: '',
+		},
+	});
 
 	const onSubmit = ({
 		nombre,
@@ -51,7 +62,7 @@ export default function CargarProducto({ handleVista }) {
 						type='text'
 						required
 						{...register('nombre')}
-					></input>
+						value={setValue('nombre')}></input>
 				</div>
 
 				{/* CAMPO DESCRIPCION */}
@@ -64,7 +75,7 @@ export default function CargarProducto({ handleVista }) {
 						type='text'
 						required
 						{...register('descripcion')}
-					></input>
+						value={setValue('descripcion')}></input>
 				</div>
 
 				{/* CAMPO STOCK */}
@@ -77,7 +88,7 @@ export default function CargarProducto({ handleVista }) {
 						type='number'
 						required
 						{...register('stock')}
-					></input>
+						value={setValue('stock')}></input>
 				</div>
 
 				{/* CAMPO STOCK MINIMO */}
@@ -90,12 +101,14 @@ export default function CargarProducto({ handleVista }) {
 						type='number'
 						required
 						{...register('stockMinimo')}
-					></input>
+						value={setValue('stockMinimo')}></input>
 				</div>
 
 				{/* CAMPO COMPRA */}
 				<div className='contenedor-compra'>
-					<label className='contenedor-compra-label' from='contenedor-compra-input'>
+					<label
+						className='contenedor-compra-label'
+						from='contenedor-compra-input'>
 						compra
 					</label>
 					<input
@@ -103,7 +116,7 @@ export default function CargarProducto({ handleVista }) {
 						type='number'
 						required
 						{...register('compra')}
-					></input>
+						value={setValue('compra')}></input>
 				</div>
 
 				{/* CAMPO IVA */}
@@ -116,7 +129,7 @@ export default function CargarProducto({ handleVista }) {
 						type='number'
 						required
 						{...register('iva')}
-					></input>
+						value={setValue('iva')}></input>
 				</div>
 
 				{/* CAMPO UTILIDAD */}
@@ -129,7 +142,7 @@ export default function CargarProducto({ handleVista }) {
 						type='number'
 						required
 						{...register('utilidad')}
-					></input>
+						value={setValue('utilidad')}></input>
 				</div>
 
 				{/* CAMPO VENTA */}
@@ -142,7 +155,7 @@ export default function CargarProducto({ handleVista }) {
 						type='number'
 						required
 						{...register('venta')}
-					></input>
+						value={setValue('venta')}></input>
 				</div>
 
 				{/* CAMPO CATEGORIA */}
@@ -155,8 +168,7 @@ export default function CargarProducto({ handleVista }) {
 						className='categoria-input'
 						required
 						{...register('categoria')}
-						defaultValue={'DEFAULT'}
-					>
+						defaultValue={'DEFAULT'}>
 						<option value='DEFAULT' disabled>
 							Seleccionar una Categoría
 						</option>

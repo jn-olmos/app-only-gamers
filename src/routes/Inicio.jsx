@@ -1,6 +1,6 @@
 import React from 'react';
 import '../scss/Routes/_inicio.scss';
-import Estadisticas from '../components/Estadisticas/Estadisticas';
+// import Estadisticas from '../components/Estadisticas/Estadisticas';
 import Footer from '../components/Mains/Footer';
 import Header from '../components/Mains/Header';
 import NavCRUD from '../components/CRUD/NavCRUD';

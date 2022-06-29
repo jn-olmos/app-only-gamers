@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../../../scss/components/CRUD/_tablaProductos.scss';
+import '../../../scss/components/CRUD/Productos/_tablaProductos.scss';
 import { BiEditAlt, BiTrashAlt } from 'react-icons/bi';
 
 const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {

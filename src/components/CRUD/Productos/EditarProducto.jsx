@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import '../../../scss/components/CRUD/_editarProductos.scss';
+import '../../../scss/components/CRUD/Productos/_editarProductos.scss';
 
 export default function EditarProducto({ producto, handleVista }) {
 	const { register, handleSubmit, setValue } = useForm({

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../../../scss/components/CRUD/_productos.scss';
-import '../../../scss/components/CRUD/_eliminarProducto.scss';
+import '../../../scss/components/CRUD/Productos/_productos.scss';
+import '../../../scss/components/CRUD/Productos/_eliminarProducto.scss';
 import CargarProducto from './CargarProducto';
 import TablaProductos from './TablaProductos';
 import EditarProducto from './EditarProducto';

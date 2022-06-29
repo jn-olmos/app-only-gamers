@@ -1,13 +1,22 @@
-import '../../../scss/components/CRUD/Usuarios/_cargarUsuario.scss';
+import '../../../scss/components/CRUD/Usuarios/_editarUsuarios.scss';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-export default function CargarUsuario() {
-	const { register, handleSubmit } = useForm();
+export default function CargarUsuario({ usuario, handleVista }) {
+	const { register, handleSubmit, setValue } = useForm({
+		defaultValue: {
+			apellido: '',
+			nombre: '',
+			nickname: '',
+			password: '',
+			email: '',
+			telefono: '',
+		},
+	});
 
 	const onSubmit = ({ apellido, nombre, nickname, password, email, telefono }) => {
 		axios
-			.post('https://api-onlygamers.herokuapp.com/api/usuarios', {
+			.put('https://api-onlygamers.herokuapp.com/api/usuarios', {
 				apellido,
 				nombre,
 				nickname,
@@ -21,10 +30,11 @@ export default function CargarUsuario() {
 			.catch(function (error) {
 				console.log(error);
 			});
+		handleVista('tabla');
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form className='form-editar-usuario' onSubmit={handleSubmit(onSubmit)}>
 			{/* CAMPO APELLIDO */}
 			<div className='cont-apellido'>
 				<label className='apellido-label' from='apellido-input'>
@@ -35,6 +45,7 @@ export default function CargarUsuario() {
 					type='text'
 					required
 					{...register('apellido')}
+					value={setValue('apellido', usuario.apellido)}
 				></input>
 			</div>
 
@@ -48,6 +59,7 @@ export default function CargarUsuario() {
 					type='text'
 					required
 					{...register('nombre')}
+					value={setValue('apellido', usuario.nombre)}
 				></input>
 			</div>
 
@@ -61,6 +73,7 @@ export default function CargarUsuario() {
 					type='text'
 					required
 					{...register('nickname')}
+					value={setValue('nickname', usuario.nickname)}
 				></input>
 			</div>
 
@@ -74,6 +87,7 @@ export default function CargarUsuario() {
 					type='password'
 					required
 					{...register('password')}
+					//value={setValue('password', usuario.password)}
 				></input>
 			</div>
 
@@ -82,7 +96,13 @@ export default function CargarUsuario() {
 				<label className='email-label' from='email-input'>
 					email
 				</label>
-				<input className='email-input' type='email' required {...register('email')}></input>
+				<input
+					className='email-input'
+					type='email'
+					required
+					{...register('email')}
+					value={setValue('email', usuario.email)}
+				></input>
 			</div>
 
 			{/* CAMPO TELEFONO */}
@@ -95,10 +115,11 @@ export default function CargarUsuario() {
 					type='number'
 					required
 					{...register('telefono')}
+					value={setValue('telefono', usuario.telefono)}
 				></input>
 			</div>
 
-			<input className='boton-submit' type='submit' value='Cargar' />
+			<input className='boton-submit' type='submit' value='Editar Usuario' />
 		</form>
 	);
 }

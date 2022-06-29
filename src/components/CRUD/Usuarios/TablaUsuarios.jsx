@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import '../../../scss/components/CRUD/Usuarios/_tablaUsuarios.scss';
 import axios from 'axios';
-import '../../../scss/components/CRUD/_tablaUsuarios.scss';
+import { BiEditAlt, BiTrashAlt } from 'react-icons/bi';
 
-const TablaUsuarios = () => {
+const TablaUsuarios = ({ handleUsuario, handleVista, handleEliminar }) => {
 	const [usuarios, setUsuarios] = useState([]);
 
 	const endpoint = 'https://api-onlygamers.herokuapp.com/api/usuarios';
@@ -16,56 +17,58 @@ const TablaUsuarios = () => {
 
 	useEffect(() => {
 		getData();
-	}, []);
+	}, [usuarios]);
 
-	function eliminarUsuario(id) {
-		axios.delete(endpoint + '/' + id).then((deleted) => {
+	function confirmacionEliminacion(usuarioAEliminar) {
+		handleEliminar(usuarioAEliminar, eliminarUsuario);
+	}
+
+	function eliminarUsuario(usuarioAEliminar) {
+		axios.delete(endpoint + '/' + usuarioAEliminar).then((deleted) => {
 			axios.get(endpoint).then((response) => {
 				getData();
 			});
 		});
 	}
 
-	function editarUsuario(usuario) {
-		alert('aqui va un modal para editar un USUARIO');
+	function editarUsuario(usuarioAEditar) {
+		handleUsuario(usuarioAEditar);
+		handleVista('editar');
 	}
 
 	return (
-		<table className='tabla-usuario'>
+		<table className='tabla-usuarios'>
 			<thead>
 				<tr>
-					<th className='id-column'>compra</th>
-					<th className='nombre-column'>nombre</th>
-					<th className='apellido-column'>ID</th>
-					<th className='nickname-column'>descripcion</th>
-					<th className='password-column'>categoria</th>
-					<th className='email-column'>stock</th>
-					<th className='telefono-column'>stock min.</th>
+					<th className='nombre-column text'>Nombre</th>
+					<th className='apellido-column text'>Apellido</th>
+					<th className='nickname-column text'>Nickname</th>
+					<th className='email-column text'>Email</th>
+					<th className='telefono-column num'>Telefono</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				{usuarios.map((usuario) => (
 					<tr key={usuario.id}>
-						<td>{usuario.id.slice(-5)}</td>
 						<td>{usuario.nombre}</td>
 						<td>{usuario.apellido}</td>
 						<td>{usuario.nickname}</td>
-						<td>{usuario.password}</td>
 						<td>{usuario.email}</td>
-						<td>{usuario.compra}</td>
-						<td>{usuario.telefono}</td>
+						<td className='num'>{usuario.telefono}</td>
+
 						<td className='boton-column'>
 							<button className='boton-editar' onClick={() => editarUsuario(usuario)}>
-								Editar
+								<BiEditAlt />
 							</button>
 						</td>
+
 						<td className='boton-column'>
 							<button
-								className='boton-usuario'
-								onClick={() => eliminarUsuario(usuario.id)}
+								className='boton-eliminar'
+								onClick={() => confirmacionEliminacion(usuario)}
 							>
-								Eliminar
+								<BiTrashAlt />
 							</button>
 						</td>
 					</tr>

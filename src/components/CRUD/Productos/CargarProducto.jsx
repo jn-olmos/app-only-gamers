@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import '../../../scss/components/CRUD/_cargarProducto.scss';
+import '../../../scss/components/CRUD/Productos/_cargarProducto.scss';
 
 export default function CargarProducto({ handleVista }) {
 	const { register, handleSubmit } = useForm();

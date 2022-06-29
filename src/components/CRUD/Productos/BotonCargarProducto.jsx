@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../scss/components/CRUD/_botonCargarProducto.scss';
+import '../../../scss/components/CRUD/Productos/_botonCargarProducto.scss';
 
 const BotonCargarProducto = ({ click }) => {
 	return (

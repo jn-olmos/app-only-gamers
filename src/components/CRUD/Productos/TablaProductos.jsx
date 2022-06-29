@@ -40,7 +40,7 @@ const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 		<table className='tabla-productos'>
 			<thead>
 				<tr>
-					{/* <th className='id-column'>ID</th> */}
+					<th className='id-column'>ID</th>
 					<th className='nombre-column text'>nombre</th>
 					<th className='descripcion-column text'>descripcion</th>
 					<th className='categoria-column text'>categoria</th>
@@ -54,9 +54,19 @@ const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 			</thead>
 
 			<tbody>
-				{productos.map((producto) => (
-					<tr key={producto.id}>
-						{/* <td className='id-column'>{producto.id.slice(-3)}</td> */}
+				{productos.map((producto, index) => (
+					<tr
+						key={producto.id}
+						style={
+							producto.stock < producto.stockMinimo
+								? {
+										backgroundColor: 'var(--yellow)',
+								  }
+								: null
+						}
+					>
+						<td className='id-column'>{index + 1}</td>
+						{/* // id obtenido de la iteracion del .map, el id original para metodos es a traves de mongo */}
 						<td className='nombre-column'>{producto.nombre}</td>
 						<td className='descripcion-column'>{producto.descripcion}</td>
 						<td className='categoria-column'>{producto.categoria}</td>
@@ -65,12 +75,9 @@ const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 							style={
 								producto.stock < producto.stockMinimo
 									? {
-											color: 'white',
+											color: 'var(--rojo-suave)',
 											fontWeight: 'bold',
-											fontSize: '16px',
-											backgroundColor: 'var(--yellow)',
-											borderRight: 'solid 1px white',
-											// borderTop: 'solid .5px white',
+											fontSize: '17px',
 									  }
 									: null
 							}
@@ -82,11 +89,9 @@ const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 							style={
 								producto.stock < producto.stockMinimo
 									? {
-											color: 'white',
+											color: 'var(--rojo-suave)',
 											fontWeight: 'bold',
-											fontSize: '16px',
-											backgroundColor: 'var(--yellow)',
-											// borderTop: 'solid .5px white',
+											fontSize: '17px',
 									  }
 									: null
 							}
@@ -94,6 +99,7 @@ const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 							{producto.stockMinimo}
 						</td>
 						<td className='compra-column num'>
+							$
 							{new Intl.NumberFormat('es-ES', {
 								style: 'currency',
 								currency: 'ARS',
@@ -102,7 +108,7 @@ const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 						<td className='iva-column num'>{producto.iva}%</td>
 						<td className='utilidad-column num'>{producto.utilidad}%</td>
 						<td className='venta-column num'>
-							${' '}
+							$
 							{new Intl.NumberFormat('es-ES', {
 								style: 'currency',
 								currency: 'ARS',

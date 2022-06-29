@@ -66,12 +66,10 @@
     align-self: flex-end;
     margin-bottom: 1rem;
     border-radius: 5px;
+    cursor: pointer;
 
     &:hover {
       transform: scale(1.03);
-      // border: solid 10px var(--gris/-claro);
     }
   }
-  
-  
 }

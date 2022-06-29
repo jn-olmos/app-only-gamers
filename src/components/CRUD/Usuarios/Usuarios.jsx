@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../../scss/components/CRUD/Usuarios/_usuarios.scss';
+import '../../../scss/components/CRUD/Usuarios/_eliminarUsuario.scss';
 import CargarUsuario from './CargarUsuario';
 import TablaUsuarios from './TablaUsuarios';
 import EditarUsuario from './EditarUsuario';
@@ -20,11 +21,11 @@ const Usuarios = () => {
 		setEditarUsuario(usuarioAEditar);
 	};
 
-	const handleEliminar = ({ id, nombre, apellido }, method) => {
-		// alert('llego!');
-		setUsuarioEliminar({ id, nombre, apellido, method });
+	const handleEliminarUsuario = ({ id, nombre, apellido, email, nickname }, method) => {
+		setUsuarioEliminar({ id, nombre, apellido, email, nickname, method });
 		setVista('eliminar');
-		// alert(vista);
+		console.log(vista);
+		console.log(usuarioEliminar);
 	};
 
 	const confirmarEliminacion = (idUsuarioAEliminar) => {
@@ -49,7 +50,7 @@ const Usuarios = () => {
 					<TablaUsuarios
 						handleUsuario={handleUsuario}
 						handleVista={handleVista}
-						handleEliminar={handleEliminar}
+						handleEliminarUsuario={handleEliminarUsuario}
 					/>
 				</div>
 			</div>
@@ -123,8 +124,10 @@ const Usuarios = () => {
 				</div>
 
 				<div className='contenido-eliminar'>
-					<h3 className='texto-usuario-eliminar'>{usuarioEliminar.nombre}</h3>
-					<p className='texto-usuario-eliminar'>{usuarioEliminar.descripcion}</p>
+					<h3 className='texto-usuario-eliminar'>
+						{usuarioEliminar.nombre} {usuarioEliminar.apellido}
+					</h3>
+					<p className='texto-usuario-eliminar'>{usuarioEliminar.nickname}</p>
 
 					<div className='contenedor-botones-eliminar'>
 						<button

@@ -3,7 +3,7 @@ import '../../../scss/components/CRUD/Usuarios/_tablaUsuarios.scss';
 import axios from 'axios';
 import { BiEditAlt, BiTrashAlt } from 'react-icons/bi';
 
-const TablaUsuarios = ({ handleUsuario, handleVista, handleEliminar }) => {
+const TablaUsuarios = ({ handleUsuario, handleVista, handleEliminarUsuario }) => {
 	const [usuarios, setUsuarios] = useState([]);
 
 	const endpoint = 'https://api-onlygamers.herokuapp.com/api/usuarios';
@@ -19,8 +19,8 @@ const TablaUsuarios = ({ handleUsuario, handleVista, handleEliminar }) => {
 		getData();
 	}, [usuarios]);
 
-	function confirmacionEliminacion(usuarioAEliminar) {
-		handleEliminar(usuarioAEliminar, eliminarUsuario);
+	function confirmacionEliminacionUsuario(usuarioAEliminar) {
+		handleEliminarUsuario(usuarioAEliminar, eliminarUsuario);
 	}
 
 	function eliminarUsuario(usuarioAEliminar) {
@@ -66,7 +66,7 @@ const TablaUsuarios = ({ handleUsuario, handleVista, handleEliminar }) => {
 						<td className='boton-column'>
 							<button
 								className='boton-eliminar'
-								onClick={() => confirmacionEliminacion(usuario)}
+								onClick={() => confirmacionEliminacionUsuario(usuario)}
 							>
 								<BiTrashAlt />
 							</button>

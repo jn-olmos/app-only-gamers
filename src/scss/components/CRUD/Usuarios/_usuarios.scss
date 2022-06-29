@@ -5,7 +5,7 @@
   padding: 1rem 0 0 2rem ;
   
   .contenedor-vista-usuario {
-    z-index: 99;
+    z-index: 150;
     transition: transform ease-in-out .5s;
     position: absolute;
     inset: 0;
@@ -14,16 +14,16 @@
     padding: .2rem 0 0 2rem ;
     height: 77vh;
     margin-top: 1rem;
+  }
 
-    .contendor-tabla {
-      height: 50%;
-    }
+  .contenedor-tabla {
+    height: 50%;
   }
 
   .contenedor-vista-cargar-usuario, 
   .contenedor-vista-editar-usuario,
   .contenedor-vista-eliminar-usuario {
-    z-index: 101;
+    z-index: 150;
     transform: translateX(100%);
     transition: transform ease-in-out .5s;
     position: fixed;

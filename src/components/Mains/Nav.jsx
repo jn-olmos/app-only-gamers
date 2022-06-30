@@ -10,8 +10,8 @@ const NavCRUD = () => {
 				Productos
 			</NavLink>
 
-			<NavLink to='/usuarios' className='enlace'>
-				Usuarios
+			<NavLink to='/ventas' className='enlace'>
+				Ventas
 			</NavLink>
 		</section>
 	);

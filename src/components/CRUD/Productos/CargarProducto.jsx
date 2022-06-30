@@ -62,12 +62,13 @@ export default function CargarProducto({ handleVista }) {
 						type='text'
 						required
 						{...register('nombre')}
-						value={setValue('nombre')}></input>
+						value={setValue('nombre')}
+					></input>
 				</div>
 
 				{/* CAMPO DESCRIPCION */}
 				<div className='contenedor-descripcion'>
-					<label className='descripcion-label' from='descripcion-input'>
+					<label className='descripcion-label label' from='descripcion-input'>
 						descripcion
 					</label>
 					<input
@@ -75,12 +76,13 @@ export default function CargarProducto({ handleVista }) {
 						type='text'
 						required
 						{...register('descripcion')}
-						value={setValue('descripcion')}></input>
+						value={setValue('descripcion')}
+					></input>
 				</div>
 
 				{/* CAMPO STOCK */}
 				<div className='contenedor-stock'>
-					<label className='stock-label' from='stock-input'>
+					<label className='stock-label label' from='stock-input'>
 						stock
 					</label>
 					<input
@@ -88,12 +90,13 @@ export default function CargarProducto({ handleVista }) {
 						type='number'
 						required
 						{...register('stock')}
-						value={setValue('stock')}></input>
+						value={setValue('stock')}
+					></input>
 				</div>
 
 				{/* CAMPO STOCK MINIMO */}
 				<div className='contenedor-stockMinimo'>
-					<label className='stockMinimo-label' from='stockMinimo-input'>
+					<label className='stockMinimo-label label' from='stockMinimo-input'>
 						stock minimo
 					</label>
 					<input
@@ -101,14 +104,13 @@ export default function CargarProducto({ handleVista }) {
 						type='number'
 						required
 						{...register('stockMinimo')}
-						value={setValue('stockMinimo')}></input>
+						value={setValue('stockMinimo')}
+					></input>
 				</div>
 
 				{/* CAMPO COMPRA */}
 				<div className='contenedor-compra'>
-					<label
-						className='contenedor-compra-label'
-						from='contenedor-compra-input'>
+					<label className='contenedor-compra-label label' from='contenedor-compra-input'>
 						compra
 					</label>
 					<input
@@ -116,12 +118,13 @@ export default function CargarProducto({ handleVista }) {
 						type='number'
 						required
 						{...register('compra')}
-						value={setValue('compra')}></input>
+						value={setValue('compra')}
+					></input>
 				</div>
 
 				{/* CAMPO IVA */}
 				<div className='contenedor-iva'>
-					<label className='iva-label' from='iva-input'>
+					<label className='iva-label label' from='iva-input'>
 						iva
 					</label>
 					<input
@@ -129,12 +132,13 @@ export default function CargarProducto({ handleVista }) {
 						type='number'
 						required
 						{...register('iva')}
-						value={setValue('iva')}></input>
+						value={setValue('iva')}
+					></input>
 				</div>
 
 				{/* CAMPO UTILIDAD */}
 				<div className='contenedor-utilidad'>
-					<label className='utilidad-label' from='utilidad-input'>
+					<label className='utilidad-label label' from='utilidad-input'>
 						utilidad
 					</label>
 					<input
@@ -142,12 +146,13 @@ export default function CargarProducto({ handleVista }) {
 						type='number'
 						required
 						{...register('utilidad')}
-						value={setValue('utilidad')}></input>
+						value={setValue('utilidad')}
+					></input>
 				</div>
 
 				{/* CAMPO VENTA */}
 				<div className='contenedor-venta'>
-					<label className='venta-label' from='venta-input'>
+					<label className='venta-label label' from='venta-input'>
 						venta
 					</label>
 					<input
@@ -155,12 +160,13 @@ export default function CargarProducto({ handleVista }) {
 						type='number'
 						required
 						{...register('venta')}
-						value={setValue('venta')}></input>
+						value={setValue('venta')}
+					></input>
 				</div>
 
 				{/* CAMPO CATEGORIA */}
 				<div className='contenedor-categoria'>
-					<label className='categoria-label' from='categoria-input'>
+					<label className='categoria-label label' from='categoria-input'>
 						categoria
 					</label>
 
@@ -168,7 +174,8 @@ export default function CargarProducto({ handleVista }) {
 						className='categoria-input'
 						required
 						{...register('categoria')}
-						defaultValue={'DEFAULT'}>
+						defaultValue={'DEFAULT'}
+					>
 						<option value='DEFAULT' disabled>
 							Seleccionar una Categoría
 						</option>

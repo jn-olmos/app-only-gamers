@@ -2,7 +2,7 @@ import './scss/components/_app.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Inicio from './routes/Inicio';
 import Productos from './components/CRUD/Productos/Productos';
-import Usuarios from './components/CRUD/Usuarios/Usuarios';
+import Ventas from './components/Venta/Venta';
 
 function App() {
 	return (
@@ -14,7 +14,7 @@ function App() {
 							<Route index element={<Productos />} />
 
 							<Route path='/productos' element={<Productos />} />
-							<Route path='/usuarios' element={<Usuarios />} />
+							<Route path='/ventas' element={<Ventas />} />
 						</Route>
 
 						<Route

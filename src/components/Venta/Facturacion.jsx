@@ -1,15 +1,27 @@
+import '../../scss/components/Venta/_facturacion.scss';
 import React, { useState } from 'react';
 import axios from 'axios';
 
 const Facturacion = () => {
-	useState(() => {
-		axios.get('https://api-onlygamers.herokuapp.com/api/facturas').then(({ data }) => {
-			const ultimaFacturaCompleta = data[data.length - 1];
-			const { id, datosProductos, datosCliente } = ultimaFacturaCompleta;
-		});
-	});
+	let dataUsuario = {};
+	let dataProducto = [];
 
-	return <div>Facturacion</div>;
+	axios
+		.get('https://api-onlygamers.herokuapp.com/api/facturas')
+		.then((response) => {
+			let index = response.data.lenght - 1;
+			let { datosProductos, datosUsuarios, id } = response.data[index];
+			dataUsuario = datosUsuarios;
+			dataProducto = datosProductos;
+		})
+		// Capturamos los errores
+		.catch((e) => {});
+
+	return (
+		<div>
+			<h1>{dataUsuario.tipoFactura}</h1>
+		</div>
+	);
 };
 
 export default Facturacion;

@@ -13,7 +13,6 @@ const Venta = () => {
 	const [productosSeleccionados, setProductosSeleccionados] = useState([]);
 	const [productoFinal, setProductoFinal] = useState([]);
 	const [datosCliente, setDatosCliente] = useState({});
-	const [idUltimaFactura, setIdUltimaFactura] = useState();
 
 	const handleVista = (vista) => {
 		setVista(vista);
@@ -37,10 +36,6 @@ const Venta = () => {
 	const handleProductoFinal = (producto) => {
 		console.log(producto);
 		setProductoFinal(producto);
-	};
-
-	const handleId = (id) => {
-		setIdUltimaFactura(id);
 	};
 
 	return (
@@ -90,17 +85,21 @@ const Venta = () => {
 							<BiArrowBack color='white' type='solid' />
 						</button>
 
-						<h2 className='form-titulo'>{<BiUser color='gray' />} Resumen</h2>
+						<h2 className='form-titulo'>{<BiUser color='gray' />} Resumen de Venta</h2>
 					</div>
 					<Checkout
 						datosProductos={productoFinal}
 						datosCliente={datosCliente}
-						handleId={handleId}
+						handleVista={handleVista}
 					/>
 				</section>
 
-				<section className='vistaFacturacion'>
-					<div className='header-formulario-facturacion'>
+				<section
+					className={
+						vista === 'facturacion' ? 'vista-facturacion active' : 'vista-facturacion'
+					}
+				>
+					<div className='header-facturacion'>
 						<button
 							className='boton boton-regresar'
 							type='button'
@@ -112,7 +111,7 @@ const Venta = () => {
 						<h2 className='form-titulo'>{<BiUser color='gray' />} Facturación</h2>
 					</div>
 
-					<Facturacion idUltimaFactura={idUltimaFactura} />
+					<Facturacion />
 				</section>
 			</div>
 		</div>

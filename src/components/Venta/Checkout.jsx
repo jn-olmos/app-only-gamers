@@ -1,11 +1,7 @@
 import '../../scss/components/Venta/_checkout.scss';
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Checkout({ datosProductos, datosCliente, handlerId }) {
-	const [subTotales, setSubTotales] = useState([]);
-	let total = [];
-
+function Checkout({ datosProductos, datosCliente, handleVista }) {
 	function postear(datosProductos, datosCliente) {
 		axios
 			.post('https://api-onlygamers.herokuapp.com/api/facturas', {
@@ -20,42 +16,90 @@ function Checkout({ datosProductos, datosCliente, handlerId }) {
 			});
 	}
 
+	let total = 0;
+	for (let producto of datosProductos) total += producto.venta * producto.cantidad;
+
 	return (
-		<div>
+		<div className='resumen-venta'>
 			<div className='contenedor-resumen-venta'>
-				<h2>Resumen de venta</h2>
+				<div className='datos-cliente'>
+					<h3 className='titulo-cliente'>Datos del Cliente</h3>
+					<ul className='contenedor-info-cliente'>
+						<li>
+							Nombre: <b>{datosCliente.nombre}</b>
+						</li>
+						<li>
+							CUIT: <b>{datosCliente.cuit}</b>
+						</li>
+						<li>
+							Domicilio: <b>{datosCliente.domicilioComercial}</b>
+						</li>
+						<li>
+							Metodo de Pago: <b>{datosCliente.metodoDePago}</b>
+						</li>
+					</ul>
+				</div>
 
-				<ul>
-					<li>Nombre: {datosCliente.nombre}</li>
-					<li>CUIT: {datosCliente.cuit}</li>
-					<li>Domicilio: {datosCliente.domicilioComercial}</li>
-					<li>Metodo de Pago: {datosCliente.metodoDePago}</li>
-				</ul>
+				<div className='datos-productos'>
+					<h3>Informacion de Producto/s</h3>
+					{datosProductos.map((producto) => {
+						return (
+							<ul key={producto.id} className='contenedor-datos-productos'>
+								<li>
+									Descripcion: <b>{producto.nombre}</b>
+								</li>
+								<li>
+									Categoria: <b>{producto.categoria}</b>
+								</li>
+								<li>
+									Cantidad: <b>{producto.cantidad}</b>
+								</li>
+								<li>
+									Precio Unitario:{' '}
+									<b>
+										$
+										{new Intl.NumberFormat('es-ES', {
+											style: 'currency',
+											currency: 'ARS',
+										}).format(producto.venta)}
+									</b>{' '}
+								</li>
+								<li>
+									Subtotal:{' '}
+									<b>
+										$
+										{new Intl.NumberFormat('es-ES', {
+											style: 'currency',
+											currency: 'ARS',
+										}).format(producto.venta * producto.cantidad)}
+									</b>
+								</li>
+							</ul>
+						);
+					})}
 
-				<h3>Informacion del Producto</h3>
-				{datosProductos.map((producto) => {
-					return (
-						<ul key={producto.id}>
-							<li>Descripcion: {producto.nombre}</li>
-							<li>Categoria: {producto.categoria}</li>
-							<li>Cantidad: {producto.cantidad}</li>
-							<li>Precio Unitario: {producto.venta} </li>
-							<li>Subtotal: {producto.venta * producto.cantidad}</li>
-						</ul>
-					);
-				})}
-
-				<ul>
-					<li>Total: {total}</li>
-				</ul>
+					<ul className='contenedor-monto-total'>
+						<li>
+							Total: $
+							<b>
+								{new Intl.NumberFormat('es-ES', {
+									style: 'currency',
+									currency: 'ARS',
+								}).format(total)}
+							</b>
+						</li>
+					</ul>
+				</div>
 			</div>
 
 			<button
+				className='boton-checkout-confirmar'
 				onClick={() => {
 					postear(datosProductos, datosCliente);
+					handleVista('facturacion');
 				}}
 			>
-				confirmar
+				Generar Factura
 			</button>
 		</div>
 	);

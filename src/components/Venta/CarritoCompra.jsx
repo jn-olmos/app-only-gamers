@@ -1,77 +1,56 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BiTrashAlt, BiPlus, BiMinus } from 'react-icons/bi';
 import '../../scss/components/Venta/_carritoCompra.scss';
 
-export default function CarritoProductos({ productos }) {
-	const [carritoCompras, setCarritoCompras] = useState([]);
-	// const [carrito, setCarrito] = useState([]);
+export default function CarritoProductos({ productos, handleCheckout }) {
+	let productosSeleccionados = [...new Set(productos)];
 
-	const productosSeleccionados = [...new Set(productos)];
-	// console.log(productosSeleccionados);
-	// console.log('aquiiiii\n', productos);
+	const [carritoProductos, setCarritoProductos] = useState([]);
+	// useEffect(() => {}, [productosSeleccionados]);
 
-	useEffect(() => {
-		setCarritoCompras(productosSeleccionados);
-	}, []);
+	function sumarProducto(producto) {
+		const i = productosSeleccionados.indexOf(producto);
 
-	// useEffect(() => {}, [carrito]);
-
-	// const handlecarrito = (productox) => {
-	// 	if (!productox.id) {
-	// 		return null;
-	// 	}
-
-	// 	const buscarPorducto = carrito.find((item) => {
-	// 		return item.id === producto.id;
-	// 	});
-
-	// 	if (buscarPorducto) {
-	// 		return null;
-	// 	}
-
-	// 	setCarrito([...carrito, productox]);
-
-	// 	console.log(carrito);
-	// };
-
-	function agregarProducto(producto) {
 		if (producto.cantidad < producto.stock) {
-			producto.cantidad += 1;
-			setCarritoCompras(producto);
-			console.log(producto);
+			productosSeleccionados[i].cantidad++;
+
+			return setCarritoProductos(productosSeleccionados);
 		}
 	}
 
-	// function restarProducto(productox) {
-	// 	if (productox.cantidad > 0) {
-	// 		producto.cantidad -= 1;
-	// 	} else if (productox.cantidad === 0) {
-	// 		sacarProducto(productox);
-	// 	}
-	// 	setCarrito([...carrito]);
-	// }
+	function restarProducto(producto) {
+		const i = productosSeleccionados.indexOf(producto);
 
-	// function sacarProducto(productox) {
-	// 	var indice = carrito.indexOf(productox);
-	// 	carrito.splice(indice, 1);
-	// 	setCarrito([...carrito]);
-	// }
+		if (producto.cantidad > 1) {
+			productosSeleccionados[i].cantidad--;
+
+			return setCarritoProductos(productosSeleccionados);
+		}
+	}
+
+	function eliminarProducto(producto) {
+		const i = productosSeleccionados.indexOf(producto);
+		productosSeleccionados.splice(i, 1);
+
+		return setCarritoProductos(productosSeleccionados);
+	}
 
 	return (
 		<section className='carrito-compra'>
 			<h2 className='carrito-compra-titulo'>Carrito compras</h2>
 
-			{carritoCompras.length === 0 && (
+			{productosSeleccionados.length === 0 && (
 				<h4 className='carrito-compra-aviso'>Elija sus productos</h4>
 			)}
 
 			<div className='carrito-compra-contenedor-productos'>
-				{carritoCompras.map((producto) => {
+				{productosSeleccionados.map((producto) => {
 					return (
 						<div key={producto.id} className='contenedor-producto-bajo-stock'>
 							<h4 className='titulo-producto'>{producto.nombre}</h4>
+
 							<p className='texto-producto producto-stock-minimo'>
-								precio <b>{producto.venta}</b>
+								Precio: <b>{producto.venta}</b>
 							</p>
 							<p className='texto-producto producto-stock-actual'>
 								Cantidad: <b>{producto.cantidad}</b>
@@ -79,19 +58,21 @@ export default function CarritoProductos({ productos }) {
 
 							<button
 								className='boton-agregar'
-								onClick={() => agregarProducto(producto)}
+								onClick={() => sumarProducto(producto)}
 							>
 								<BiPlus />
 							</button>
+
 							<button
 								className='boton-restar'
-								// onClick={() => restarProducto(producto)}
+								onClick={() => restarProducto(producto)}
 							>
 								<BiMinus />
 							</button>
+
 							<button
 								className='boton-eliminar'
-								// onClick={() => sacarProducto(producto)}
+								onClick={() => eliminarProducto(producto)}
 							>
 								<BiTrashAlt />
 							</button>
@@ -99,7 +80,8 @@ export default function CarritoProductos({ productos }) {
 					);
 				})}
 			</div>
-			{/* {carrito ? <button>Comprar</button> : null} */}
+
+			{productosSeleccionados.length > 0 && <button>Comprar</button>}
 		</section>
 	);
 }

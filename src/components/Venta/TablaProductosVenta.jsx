@@ -34,7 +34,6 @@ const TablaProductosVenta = ({ handleProducto }) => {
 					<th className='descripcion-column text'>descripcion</th>
 					<th className='categoria-column text'>categoria</th>
 					<th className='stock-column num'>stock</th>
-					<th className='stock-minimo-column num'>stock min.</th>
 					<th className='venta-column num'>venta</th>
 				</tr>
 			</thead>
@@ -81,26 +80,6 @@ const TablaProductosVenta = ({ handleProducto }) => {
 							}
 						>
 							{producto.stock}
-						</td>
-						<td
-							className='stock-minimo-column num'
-							style={
-								producto.stock === 0
-									? {
-											color: 'var(--gris-medio)',
-											// fontWeight: 'bold',
-											fontSize: '17px',
-									  }
-									: producto.stock < producto.stockMinimo
-									? {
-											color: 'var(--rojo-suave)',
-											// fontWeight: 'bold',
-											fontSize: '17px',
-									  }
-									: null
-							}
-						>
-							{producto.stockMinimo}
 						</td>
 						<td className='venta-column num'>
 							$

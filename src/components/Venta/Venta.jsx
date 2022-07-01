@@ -6,12 +6,13 @@ import FormCliente from './FormCliente';
 import Checkout from './Checkout';
 
 const Venta = () => {
-	const [productosSeleccionados, setProductosSeleccionados] = useState({});
+	const [productosSeleccionados, setProductosSeleccionados] = useState([]);
 	const [datosCliente, setDatosCliente] = useState();
 
+	// DESDE LA TABLA PRODUCTO
 	const handleProducto = (producto) => {
-		// console.log(producto);
-		setProductosSeleccionados(producto);
+		producto.cantidad = 1;
+		setProductosSeleccionados([...productosSeleccionados, producto]);
 	};
 
 	const handleDatosCliente = (dataCliente) => {
@@ -21,7 +22,7 @@ const Venta = () => {
 	return (
 		<div className='venta'>
 			<div className='contenedor-venta'>
-				<CarritoCompra producto={productosSeleccionados} />
+				<CarritoCompra productos={productosSeleccionados} />
 				<TablaProductosVenta handleProducto={handleProducto} />
 
 				<section className='vistaCliente'>

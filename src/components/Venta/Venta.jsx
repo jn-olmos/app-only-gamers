@@ -10,8 +10,8 @@ const Venta = () => {
 	const [datosCliente, setDatosCliente] = useState();
 
 	const handleProducto = (producto) => {
+		// console.log(producto);
 		setProductosSeleccionados(producto);
-		console.log(productosSeleccionados);
 	};
 
 	const handleDatosCliente = (dataCliente) => {

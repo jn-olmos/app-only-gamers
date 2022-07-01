@@ -27,9 +27,6 @@ export default function CarritoProductos({ producto }) {
 
 		producto.cantidad = 1;
 
-		console.log(buscarPorducto);
-
-		console.log(productox);
 		setCarrito([...carrito, productox]);
 
 		console.log(carrito);
@@ -57,11 +54,11 @@ export default function CarritoProductos({ producto }) {
 		setCarrito([...carrito]);
 	}
 
+	// console.log(carrito);
+
 	return (
 		<section className='carrito-compra'>
 			<h2 className='carrito-compra-titulo'>Carrito compras</h2>
-
-			{carrito ? <p className='carrito-compra-aviso'>Agregue productos al carrito</p> : null}
 
 			<div className='carrito-compra-contenedor-productos'>
 				{carrito.map((producto) => {
@@ -97,7 +94,6 @@ export default function CarritoProductos({ producto }) {
 					);
 				})}
 			</div>
-
 			{carrito ? <button>Comprar</button> : null}
 		</section>
 	);

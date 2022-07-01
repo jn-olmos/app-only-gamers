@@ -4,13 +4,15 @@ import TablaProductosVenta from '../Venta/TablaProductosVenta';
 import CarritoCompra from '../Venta/CarritoCompra';
 import FormCliente from './FormCliente';
 import Checkout from './Checkout';
+import Facturacion from './Facturacion';
 import { BiArrowBack, BiUser } from 'react-icons/bi';
 
 const Venta = () => {
 	// valores de vista: 'venta' 'formulario' 'checkout'
 	const [vista, setVista] = useState('venta');
 	const [productosSeleccionados, setProductosSeleccionados] = useState([]);
-	const [datosCliente, setDatosCliente] = useState();
+	const [productoFinal, setProductoFinal] = useState([]);
+	const [datosCliente, setDatosCliente] = useState({});
 
 	const handleVista = (vista) => {
 		setVista(vista);
@@ -23,11 +25,17 @@ const Venta = () => {
 	};
 
 	const handleDatosCliente = (dataCliente) => {
+		console.log(dataCliente);
 		setDatosCliente(dataCliente);
 	};
 
 	const handleCarritoCompra = (productosSeleccionadosCarrito) => {
 		setProductosSeleccionados(productosSeleccionadosCarrito);
+	};
+
+	const handleProductoFinal = (producto) => {
+		console.log(producto);
+		setProductoFinal(producto);
 	};
 
 	return (
@@ -37,6 +45,7 @@ const Venta = () => {
 					productos={productosSeleccionados}
 					handleVista={handleVista}
 					handleCarritoCompra={handleCarritoCompra}
+					handleProductoFinal={handleProductoFinal}
 				/>
 				<TablaProductosVenta handleProducto={handleProducto} />
 
@@ -65,7 +74,11 @@ const Venta = () => {
 				</section>
 
 				<section className='vistaCheckout'>
-					<Checkout datosProductos={productosSeleccionados} datosCliente={datosCliente} />
+					<Checkout datosProductos={productoFinal} datosCliente={datosCliente} />
+				</section>
+
+				<section className='vistaFacturacion'>
+					<Facturacion />
 				</section>
 			</div>
 		</div>

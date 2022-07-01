@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { BiTrashAlt, BiPlus, BiMinus } from 'react-icons/bi';
 import '../../scss/components/Venta/_carritoCompra.scss';
 
-export default function CarritoProductos({ productos, handleCheckout, handleVista }) {
+export default function CarritoProductos({ productos, handleVista, handleProductoFinal }) {
 	let productosSeleccionados = [...new Set(productos)];
+
+	// console.log(productosSeleccionados);
 
 	// eslint-disable-next-line
 	const [carritoProductos, setCarritoProductos] = useState([]);
@@ -100,6 +102,7 @@ export default function CarritoProductos({ productos, handleCheckout, handleVist
 					className='carrito-compra-boton-comprar'
 					onClick={() => {
 						handleVista('formulario');
+						handleProductoFinal(productosSeleccionados);
 					}}
 				>
 					Comprar

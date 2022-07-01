@@ -1,17 +1,7 @@
 import React from 'react';
-import Facturacion from './Facturacion';
 import axios from 'axios';
 
-function Checkout(datosProductos, datosCliente) {
-	// console.log('datos producto:', typeof datosProductos, 'datos cliente:', typeof datosCliente);
-
-	const newFormatProductos = [];
-
-	for (let producto in datosProductos) {
-		console.log('\n');
-		console.log(producto);
-	}
-
+function Checkout({ datosProductos, datosCliente }) {
 	function postear(datosProductos, datosCliente) {
 		axios
 			.post('https://api-onlygamers.herokuapp.com/api/facturas', {
@@ -28,8 +18,15 @@ function Checkout(datosProductos, datosCliente) {
 
 	return (
 		<div>
-			<button onClick={() => postear(datosProductos, datosCliente)}>confirmar</button>
-			<Facturacion />
+			<div className='contenedor-resumen-venta'></div>
+
+			<button
+				onClick={() => {
+					postear(datosProductos, datosCliente);
+				}}
+			>
+				confirmar
+			</button>
 		</div>
 	);
 }

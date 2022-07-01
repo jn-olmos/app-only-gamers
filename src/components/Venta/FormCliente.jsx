@@ -23,6 +23,7 @@ export default function FormCliente({ handleDatosCliente, handleVista }) {
 			tipoFactura: facturaTipo,
 			metodoDePago: data.metodoDePago,
 		};
+
 		handleDatosCliente(datosCliente);
 		handleVista('venta');
 	};

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import TipoFactura from './TipoFactura.jsx';
 
-export default function FormCliente({ productos }) {
+export default function FormCliente({ handleDatosCliente }) {
 	const [facturaTipo, setFacturaTipo] = useState();
 	const [razonSocial, setRazonSocial] = useState();
 
@@ -13,7 +13,7 @@ export default function FormCliente({ productos }) {
 	} = useForm();
 
 	const onSubmit = (data) => {
-		let cliente = {
+		let datosCliente = {
 			nombre: data.nombre,
 			cuit: data.cuit,
 			provincia: data.provincia,
@@ -22,7 +22,7 @@ export default function FormCliente({ productos }) {
 			tipoFactura: facturaTipo,
 			metodoDePago: data.metodoDePago,
 		};
-		console.log(cliente);
+		handleDatosCliente(datosCliente)
 	};
 
 	return (

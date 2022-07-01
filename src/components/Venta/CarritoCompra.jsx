@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BiTrashAlt, BiPlus, BiMinus } from 'react-icons/bi';
+import '../../scss/components/Venta/_carritoCompra.scss';
 
 export default function CarritoProductos({ producto }) {
 	const [carritoCompras, setCarritoCompras] = useState([]);
@@ -57,51 +58,47 @@ export default function CarritoProductos({ producto }) {
 	}
 
 	return (
-		<>
-			{carritoCompras ? (
-				<section className='stock-minimo'>
-					<h2 className='stock-minimo-titulo'>Carrito compras</h2>
+		<section className='carrito-compra'>
+			<h2 className='carrito-compra-titulo'>Carrito compras</h2>
 
-					{/* <hr /> */}
+			{carrito ? <p className='carrito-compra-aviso'>Agregue productos al carrito</p> : null}
 
-					<div className='contenedor-productos-stock-minimo'>
-						{carrito.map((producto) => {
-							return (
-								<div key={producto.id} className='contenedor-producto-bajo-stock'>
-									<h4 className='titulo-producto'>{producto.nombre}</h4>
-									<p className='texto-producto producto-stock-minimo'>
-										precio <b>{producto.venta}</b>
-									</p>
-									<p className='texto-producto producto-stock-actual'>
-										Cantidad: <b>{producto.cantidad}</b>
-									</p>
+			<div className='carrito-compra-contenedor-productos'>
+				{carrito.map((producto) => {
+					return (
+						<div key={producto.id} className='contenedor-producto-bajo-stock'>
+							<h4 className='titulo-producto'>{producto.nombre}</h4>
+							<p className='texto-producto producto-stock-minimo'>
+								precio <b>{producto.venta}</b>
+							</p>
+							<p className='texto-producto producto-stock-actual'>
+								Cantidad: <b>{producto.cantidad}</b>
+							</p>
 
-									<button
-										className='boton-agregar'
-										onClick={() => agregarProducto(producto)}
-									>
-										<BiPlus />
-									</button>
-									<button
-										className='boton-restar'
-										onClick={() => restarProducto(producto)}
-									>
-										<BiMinus />
-									</button>
-									<button
-										className='boton-eliminar'
-										onClick={() => sacarProducto(producto)}
-									>
-										<BiTrashAlt />
-									</button>
-								</div>
-							);
-						})}
-					</div>
+							<button
+								className='boton-agregar'
+								onClick={() => agregarProducto(producto)}
+							>
+								<BiPlus />
+							</button>
+							<button
+								className='boton-restar'
+								onClick={() => restarProducto(producto)}
+							>
+								<BiMinus />
+							</button>
+							<button
+								className='boton-eliminar'
+								onClick={() => sacarProducto(producto)}
+							>
+								<BiTrashAlt />
+							</button>
+						</div>
+					);
+				})}
+			</div>
 
-					<button>Comprar</button>
-				</section>
-			) : null}
-		</>
+			{carrito ? <button>Comprar</button> : null}
+		</section>
 	);
 }

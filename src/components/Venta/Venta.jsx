@@ -7,23 +7,31 @@ import Checkout from './Checkout';
 
 const Venta = () => {
 	const [productosSeleccionados, setProductosSeleccionados] = useState({});
+	const [datosCliente, setDatosCliente] = useState();
 
-	const handlerProductos = (producto) => {
+	const handleProducto = (producto) => {
 		setProductosSeleccionados(producto);
+		console.log(productosSeleccionados);
+	};
+
+	const handleDatosCliente = (dataCliente) => {
+		setDatosCliente(dataCliente);
 	};
 
 	return (
 		<div className='venta'>
-			<CarritoCompra producto={productosSeleccionados} />
-			<TablaProductosVenta handlerProducto={handlerProductos} />
+			<div className='contenedor-venta'>
+				<CarritoCompra producto={productosSeleccionados} />
+				<TablaProductosVenta handleProducto={handleProducto} />
 
-			<section className='vistaCliente'>
-				<FormCliente />
-			</section>
+				<section className='vistaCliente'>
+					<FormCliente handleDatosCliente={handleDatosCliente} />
+				</section>
 
-			<section className='vistaCheckout'>
-				<Checkout />
-			</section>
+				<section className='vistaCheckout'>
+					<Checkout />
+				</section>
+			</div>
 		</div>
 	);
 };

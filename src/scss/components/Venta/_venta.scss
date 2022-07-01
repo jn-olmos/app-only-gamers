@@ -1,6 +1,14 @@
 .venta {
-	margin-top: 0;
 	position: relative;
 	overflow: hidden;
 	padding: 1rem 0 0 2rem;
+
+	.contenedor-venta {
+		position: absolute;
+		inset: 0;
+		overflow: hidden scroll;
+		margin-top: 1rem;
+		padding: 0.2rem 1rem 0 2rem;
+		height: 77vh;
+	}
 }

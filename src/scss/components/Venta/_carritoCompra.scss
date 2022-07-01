@@ -1,0 +1,35 @@
+.carrito-compra {
+	padding: 0 0.5rem 1rem;
+	width: 100%;
+	margin-bottom: 3rem;
+	border-radius: 5px;
+	border: solid 1px var(--gris-medio);
+	position: relative;
+
+	.carrito-compra-titulo {
+		position: absolute;
+		inset: 0;
+		background-color: var(--rojo-suave);
+		color: var(--blanco);
+		height: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 5px 5px 0 0;
+		border-bottom: 1px solid var(--gris-oscuro);
+	}
+
+	.carrito-compra-aviso {
+		color: black;
+		margin: 5rem 0 0;
+	}
+
+	.carrito-compra-contenedor-productos {
+		margin-top: 5rem;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: 2rem 1rem;
+	}
+}

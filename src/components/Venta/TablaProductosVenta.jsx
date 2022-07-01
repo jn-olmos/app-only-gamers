@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BiShoppingBag } from 'react-icons/bi';
 
-const TablaProductosVenta = ({ handlerProducto }) => {
-	const [productoSeleccionado, setProductoSeleccionado] = useState({});
+const TablaProductosVenta = ({ handleProducto }) => {
+	const [cargarProductoCarrito, setCargarProductoCarrito] = useState({});
 
 	const [productos, setProductos] = useState([]);
 
@@ -21,9 +21,9 @@ const TablaProductosVenta = ({ handlerProducto }) => {
 		getData();
 	}, []);
 
-	function seleccionarProducto(producto) {
-		setProductoSeleccionado(producto);
-		handlerProducto(productoSeleccionado);
+	function enviarACarrito(producto) {
+		setCargarProductoCarrito(producto);
+		handleProducto(cargarProductoCarrito);
 	}
 
 	return (
@@ -36,7 +36,7 @@ const TablaProductosVenta = ({ handlerProducto }) => {
 						<th className='descripcion-column text'>descripcion</th>
 						<th className='categoria-column text'>categoria</th>
 						<th className='stock-column num'>stock</th>
-						{/* <th className='stock-minimo-column num'>stock min.</th> */}
+						<th className='stock-minimo-column num'>stock min.</th>
 						{/* <th className='compra-column num'>compra</th>
 					<th className='iva-column num'>iva</th>
 					<th className='utilidad-column num'>utilidad</th> */}
@@ -85,7 +85,7 @@ const TablaProductosVenta = ({ handlerProducto }) => {
 							>
 								{producto.stock}
 							</td>
-							{/* <td
+							<td
 								className='stock-minimo-column num'
 								style={
 									producto.stock === 0
@@ -104,7 +104,7 @@ const TablaProductosVenta = ({ handlerProducto }) => {
 								}
 							>
 								{producto.stockMinimo}
-							</td> */}
+							</td>
 							{/* <td className='compra-column num'>
 							$
 							{new Intl.NumberFormat('es-ES', {
@@ -127,7 +127,7 @@ const TablaProductosVenta = ({ handlerProducto }) => {
 							<td className='input-column'>
 								<button
 									className='boton-eliminar'
-									onClick={() => seleccionarProducto(producto)}
+									onClick={() => enviarACarrito(producto)}
 									disabled={producto.stock < 1}
 								>
 									<BiShoppingBag />

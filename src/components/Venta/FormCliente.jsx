@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import TipoFactura from './TipoFactura.jsx';
 
-export default function FormCliente({ handleDatosCliente }) {
+export default function FormCliente({ handleDatosCliente, handleVista }) {
 	const [facturaTipo, setFacturaTipo] = useState();
 	const [razonSocial, setRazonSocial] = useState();
 
@@ -24,6 +24,7 @@ export default function FormCliente({ handleDatosCliente }) {
 			metodoDePago: data.metodoDePago,
 		};
 		handleDatosCliente(datosCliente);
+		handleVista('venta');
 	};
 
 	return (

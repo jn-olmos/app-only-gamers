@@ -28,7 +28,6 @@ const Venta = () => {
 
 	const handleCarritoCompra = (productosSeleccionadosCarrito) => {
 		setProductosSeleccionados(productosSeleccionadosCarrito);
-		console.log(productosSeleccionados, 'hola');
 	};
 
 	return (
@@ -59,7 +58,10 @@ const Venta = () => {
 
 						<h2 className='form-titulo'>{<BiUser color='gray' />} Datos del Cliente</h2>
 					</div>
-					<FormCliente handleDatosCliente={handleDatosCliente} />
+					<FormCliente
+						handleDatosCliente={handleDatosCliente}
+						handleVista={handleVista}
+					/>
 				</section>
 
 				<section className='vistaCheckout'>

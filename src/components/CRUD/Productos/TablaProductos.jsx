@@ -48,7 +48,7 @@ const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 					<th className='stock-minimo-column num'>stock min.</th>
 					<th className='compra-column num'>compra</th>
 					<th className='iva-column num'>iva</th>
-					<th className='utilidad-column num'>utilidad</th>
+					{/* <th className='utilidad-column num'>utilidad</th> */}
 					<th className='venta-column num'>venta</th>
 				</tr>
 			</thead>
@@ -106,7 +106,7 @@ const TablaProductos = ({ handleProducto, handleVista, handleEliminar }) => {
 							}).format(producto.compra)}
 						</td>
 						<td className='iva-column num'>{producto.iva}%</td>
-						<td className='utilidad-column num'>{producto.utilidad}%</td>
+						{/* <td className='utilidad-column num'>{producto.utilidad}%</td> */}
 						<td className='venta-column num'>
 							$
 							{new Intl.NumberFormat('es-ES', {

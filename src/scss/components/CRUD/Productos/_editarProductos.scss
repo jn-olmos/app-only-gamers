@@ -1,75 +1,70 @@
-.contenedor-vista-editar-producto.active{
-  transform: translateX(0);
+.contenedor-vista-editar-producto.active {
+	transform: translateX(0);
 }
 
 .header-editar-producto {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 4rem;
-  margin: 1rem 0;
-  
-  & .form-titulo {
-    width: 500px;
-    margin-bottom: 0;
-    padding-bottom: .3rem;
-    border-bottom: solid 2px var(--gris-medio);
-    color: var(--rojo-suave);
-  }
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 4rem;
+	margin: 1rem 0;
+
+	& .form-titulo {
+		width: 500px;
+		margin-bottom: 0;
+		padding-bottom: 0.3rem;
+		border-bottom: solid 2px var(--gris-medio);
+		color: var(--rojo-suave);
+	}
 }
 
-.form-editar-producto{
-  width: 100%;
-  margin: 3rem 3rem 0;
-  border-left: solid 2px var(--gris-medio);
-  padding-left: 4rem;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 4rem;
+.form-editar-producto {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 3rem 0 0 0rem;
+	gap: 3rem;
 
-  .form-inputs-contenedor {
-    & > div {
-      margin-bottom: 1rem;
-    }
+	.form-inputs-contenedor {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		gap: 1rem;
 
-    div > label {
-      font-family: var(--title-font);
-      text-transform: capitalize;
-      min-width: 100px;
-      text-align: right;
-      margin-right: 1rem;
-    }
-  
-    div > input, div > select {
-      min-width: 350px;
-      height: 35px;
-      border: solid 2px var(--gris-medio);
-      border-radius: 5px;
-      
-    }
-  
-    div > input {
-      padding-left: .5rem;
-    }
-  }
-  
-  .boton-submit {
-    border: none;
-    background-color: var(--green);
-    width: 180px;
-    height: 80px;
-    // border-radius: 20px;
-    color: var(--blanco);
-    transition: transform ease-in-out .3s;
-    align-self: flex-end;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
+		.contenedor {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 1rem;
+		}
 
-    &:hover {
-      transform: scale(1.03);
-    }
-  }
+		label {
+			width: 200px;
+			text-transform: capitalize;
+			text-align: right;
+		}
+
+		input,
+		select {
+			width: 300px;
+			border: solid 1px var(--gris-medio);
+			border-radius: 5px;
+			height: 35px;
+			padding-left: 0.5rem;
+		}
+	}
+	input.boton-submit {
+		align-self: flex-end;
+		justify-self: flex-end;
+		background: var(--green);
+		color: white;
+		font-family: var(--title-font);
+		width: 300px;
+		border: solid 1px var(--gris-medio);
+		border-radius: 5px;
+		height: 70px;
+		font-size: 20px;
+	}
 }

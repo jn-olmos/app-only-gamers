@@ -20,58 +20,51 @@
 }
 
 .form-producto {
-	width: 80%;
-	margin: 3rem 0rem 0 8rem;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	// gap: 4rem;
+	margin: 3rem 0 0 0rem;
+	gap: 3rem;
 
-	.form-inputs-contenedor {
-		& > div {
-			margin-bottom: 1rem;
+	.form-contenedor-inputs {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		gap: 1rem;
 
-			&:last-child {
-				margin-bottom: 0;
-			}
+		.contenedor {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 1rem;
 		}
 
-		& > div > label {
-			font-family: var(--title-font);
+		label {
+			width: 200px;
 			text-transform: capitalize;
-			min-width: 200px;
-			width: 300px;
 			text-align: right;
-			margin-right: 1rem;
 		}
 
-		& > div > input,
-		& > div > select {
-			min-width: 300px;
-			height: 35px;
-			border: solid 2px var(--gris-medio);
+		input,
+		select {
+			width: 300px;
+			border: solid 1px var(--gris-medio);
 			border-radius: 5px;
-		}
-
-		div > input {
+			height: 35px;
 			padding-left: 0.5rem;
 		}
 	}
-
-	.boton-submit {
-		border: none;
-		background-color: var(--green);
-		width: 250px;
-		height: 100px;
-		color: var(--blanco);
-		transition: transform ease-in-out 0.3s;
+	input.boton-submit {
 		align-self: flex-end;
+		justify-self: flex-end;
+		background: var(--green);
+		color: white;
+		font-family: var(--title-font);
+		width: 300px;
+		border: solid 1px var(--gris-medio);
 		border-radius: 5px;
-		cursor: pointer;
-
-		&:hover {
-			transform: scale(1.03);
-			// border: solid 10px var(--gris/-claro);
-		}
+		height: 70px;
+		font-size: 20px;
 	}
 }

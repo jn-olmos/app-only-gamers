@@ -51,9 +51,9 @@ export default function CargarProducto({ handleVista }) {
 
 	return (
 		<form className='form-producto' onSubmit={handleSubmit(onSubmit)}>
-			<div className='form-inputs-contenedor'>
+			<div className='form-contenedor-inputs'>
 				{/* CAMPO NOMBRE */}
-				<div className='contenedor-nombre'>
+				<div className='contenedor-nombre contenedor'>
 					<label className='nombre-label' from='nombre-input'>
 						producto
 					</label>
@@ -67,7 +67,7 @@ export default function CargarProducto({ handleVista }) {
 				</div>
 
 				{/* CAMPO DESCRIPCION */}
-				<div className='contenedor-descripcion'>
+				<div className='contenedor-descripcion contenedor'>
 					<label className='descripcion-label label' from='descripcion-input'>
 						descripcion
 					</label>
@@ -81,7 +81,7 @@ export default function CargarProducto({ handleVista }) {
 				</div>
 
 				{/* CAMPO STOCK */}
-				<div className='contenedor-stock'>
+				<div className='contenedor-stock contenedor'>
 					<label className='stock-label label' from='stock-input'>
 						stock
 					</label>
@@ -95,7 +95,7 @@ export default function CargarProducto({ handleVista }) {
 				</div>
 
 				{/* CAMPO STOCK MINIMO */}
-				<div className='contenedor-stockMinimo'>
+				<div className='contenedor-stockMinimo contenedor'>
 					<label className='stockMinimo-label label' from='stockMinimo-input'>
 						stock minimo
 					</label>
@@ -109,7 +109,7 @@ export default function CargarProducto({ handleVista }) {
 				</div>
 
 				{/* CAMPO COMPRA */}
-				<div className='contenedor-compra'>
+				<div className='contenedor-compra contenedor'>
 					<label className='contenedor-compra-label label' from='contenedor-compra-input'>
 						compra
 					</label>
@@ -123,7 +123,7 @@ export default function CargarProducto({ handleVista }) {
 				</div>
 
 				{/* CAMPO IVA */}
-				<div className='contenedor-iva'>
+				<div className='contenedor-iva contenedor'>
 					<label className='iva-label label' from='iva-input'>
 						iva
 					</label>
@@ -137,7 +137,7 @@ export default function CargarProducto({ handleVista }) {
 				</div>
 
 				{/* CAMPO UTILIDAD */}
-				<div className='contenedor-utilidad'>
+				<div className='contenedor-utilidad contenedor'>
 					<label className='utilidad-label label' from='utilidad-input'>
 						utilidad
 					</label>
@@ -151,7 +151,7 @@ export default function CargarProducto({ handleVista }) {
 				</div>
 
 				{/* CAMPO VENTA */}
-				<div className='contenedor-venta'>
+				<div className='contenedor-venta contenedor'>
 					<label className='venta-label label' from='venta-input'>
 						venta
 					</label>
@@ -165,7 +165,7 @@ export default function CargarProducto({ handleVista }) {
 				</div>
 
 				{/* CAMPO CATEGORIA */}
-				<div className='contenedor-categoria'>
+				<div className='contenedor-categoria contenedor'>
 					<label className='categoria-label label' from='categoria-input'>
 						categoria
 					</label>

@@ -25,7 +25,7 @@ export default function FormCliente({ handleDatosCliente, handleVista }) {
 		};
 
 		handleDatosCliente(datosCliente);
-		handleVista('venta');
+		handleVista('checkout');
 	};
 
 	return (

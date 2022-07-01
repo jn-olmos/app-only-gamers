@@ -3,7 +3,8 @@
 	overflow: hidden;
 	padding: 1rem 0 0 2rem;
 
-	.vista-formulario-cliente {
+	.vista-formulario-cliente,
+	.vista-checkout {
 		transform: translateX(100%);
 		position: fixed;
 		z-index: 101;

@@ -53,7 +53,7 @@ export default function EditarProducto({ producto, handleVista }) {
 		<form className='form-editar-producto' onSubmit={handleSubmit(onSubmit)}>
 			<div className='form-inputs-contenedor'>
 				{/* CAMPO NOMBRE */}
-				<div className='contenedor-nombre'>
+				<div className='contenedor-nombre contenedor'>
 					<label className='nombre-label' from='nombre-input'>
 						producto
 					</label>
@@ -66,7 +66,7 @@ export default function EditarProducto({ producto, handleVista }) {
 				</div>
 
 				{/* CAMPO DESCRIPCION */}
-				<div className='contenedor-descripcion'>
+				<div className='contenedor-descripcion contenedor'>
 					<label className='descripcion-label' from='descripcion-input'>
 						descripcion
 					</label>
@@ -79,7 +79,7 @@ export default function EditarProducto({ producto, handleVista }) {
 				</div>
 
 				{/* CAMPO STOCK */}
-				<div className='contenedor-stock'>
+				<div className='contenedor-stock contenedor'>
 					<label className='stock-label' from='stock-input'>
 						stock
 					</label>
@@ -92,7 +92,7 @@ export default function EditarProducto({ producto, handleVista }) {
 				</div>
 
 				{/* CAMPO STOCK MINIMO */}
-				<div className='contenedor-stockMinimo'>
+				<div className='contenedor-stockMinimo contenedor'>
 					<label className='stockMinimo-label' from='stockMinimo-input'>
 						stock minimo
 					</label>
@@ -105,12 +105,12 @@ export default function EditarProducto({ producto, handleVista }) {
 				</div>
 
 				{/* CAMPO COMPRA */}
-				<div className='contenedor-compra'>
+				<div className='contenedor-compra contenedor'>
 					<label className='contenedor-compra-label' from='contenedor-compra-input'>
 						compra
 					</label>
 					<input
-						className='contenedor-compra-input'
+						className='contenedor-compra-input contenedor'
 						type='number'
 						{...register('compra')}
 						value={setValue('compra', producto.compra)}
@@ -118,7 +118,7 @@ export default function EditarProducto({ producto, handleVista }) {
 				</div>
 
 				{/* CAMPO IVA */}
-				<div className='contenedor-iva'>
+				<div className='contenedor-iva contenedor'>
 					<label className='iva-label' from='iva-input'>
 						iva
 					</label>
@@ -131,7 +131,7 @@ export default function EditarProducto({ producto, handleVista }) {
 				</div>
 
 				{/* CAMPO UTILIDAD */}
-				<div className='contenedor-utilidad'>
+				<div className='contenedor-utilidad contenedor'>
 					<label className='utilidad-label' from='utilidad-input'>
 						utilidad
 					</label>
@@ -144,7 +144,7 @@ export default function EditarProducto({ producto, handleVista }) {
 				</div>
 
 				{/* CAMPO VENTA */}
-				<div className='contenedor-venta'>
+				<div className='contenedor-venta contenedor'>
 					<label className='venta-label' from='venta-input'>
 						venta
 					</label>
@@ -157,7 +157,7 @@ export default function EditarProducto({ producto, handleVista }) {
 				</div>
 
 				{/* CAMPO CATEGORIA */}
-				<div className='contenedor-categoria'>
+				<div className='contenedor-categoria contenedor'>
 					<label className='categoria-label' from='categoria-input'>
 						categoria
 					</label>

@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { BiTrashAlt, BiPlus, BiMinus } from 'react-icons/bi';
 import '../../scss/components/Venta/_carritoCompra.scss';
 
-export default function CarritoProductos({ productos, handleCheckout }) {
+export default function CarritoProductos({ productos, handleCheckout, handleVista }) {
 	let productosSeleccionados = [...new Set(productos)];
 
+	// eslint-disable-next-line
 	const [carritoProductos, setCarritoProductos] = useState([]);
+
 	// useEffect(() => {}, [productosSeleccionados]);
 
 	function sumarProducto(producto) {
@@ -46,42 +48,63 @@ export default function CarritoProductos({ productos, handleCheckout }) {
 			<div className='carrito-compra-contenedor-productos'>
 				{productosSeleccionados.map((producto) => {
 					return (
-						<div key={producto.id} className='contenedor-producto-bajo-stock'>
+						<div key={producto.id} className='contenedor-producto'>
 							<h4 className='titulo-producto'>{producto.nombre}</h4>
 
-							<p className='texto-producto producto-stock-minimo'>
-								Precio: <b>{producto.venta}</b>
+							<p className='texto-producto producto-precio'>
+								Precio:{' '}
+								<b>
+									$
+									{new Intl.NumberFormat('es-ES', {
+										style: 'currency',
+										currency: 'ARS',
+									}).format(producto.venta)}
+								</b>
 							</p>
-							<p className='texto-producto producto-stock-actual'>
+							<p className='texto-producto producto-cantidad'>
 								Cantidad: <b>{producto.cantidad}</b>
 							</p>
 
-							<button
-								className='boton-agregar'
-								onClick={() => sumarProducto(producto)}
-							>
-								<BiPlus />
-							</button>
+							<div className='contenedor-botones'>
+								<div className='botones-cantidad'>
+									<button
+										className='boton-agregar'
+										onClick={() => sumarProducto(producto)}
+									>
+										<BiPlus />
+									</button>
 
-							<button
-								className='boton-restar'
-								onClick={() => restarProducto(producto)}
-							>
-								<BiMinus />
-							</button>
+									<button
+										className='boton-restar'
+										onClick={() => restarProducto(producto)}
+									>
+										<BiMinus />
+									</button>
+								</div>
 
-							<button
-								className='boton-eliminar'
-								onClick={() => eliminarProducto(producto)}
-							>
-								<BiTrashAlt />
-							</button>
+								{/* <button
+									className='boton-eliminar'
+									onClick={() => eliminarProducto(producto)}
+								>
+									<BiTrashAlt />
+								</button> */}
+							</div>
 						</div>
 					);
 				})}
 			</div>
 
-			{productosSeleccionados.length > 0 && <button>Comprar</button>}
+			{productosSeleccionados.length > 0 && (
+				<button
+					type='button'
+					className='carrito-compra-boton-comprar'
+					onClick={() => {
+						handleVista('formulario');
+					}}
+				>
+					Comprar
+				</button>
+			)}
 		</section>
 	);
 }

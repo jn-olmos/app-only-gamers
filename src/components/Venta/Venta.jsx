@@ -25,7 +25,7 @@ const Venta = () => {
 	};
 
 	const handleDatosCliente = (dataCliente) => {
-		console.log(dataCliente);
+		// console.log(dataCliente);
 		setDatosCliente(dataCliente);
 	};
 
@@ -34,7 +34,7 @@ const Venta = () => {
 	};
 
 	const handleProductoFinal = (producto) => {
-		console.log(producto);
+		// console.log(producto);
 		setProductoFinal(producto);
 	};
 
@@ -111,7 +111,7 @@ const Venta = () => {
 						<h2 className='form-titulo'>{<BiUser color='gray' />} Facturación</h2>
 					</div>
 
-					<Facturacion />
+					<Facturacion datosProductos={productoFinal} datosCliente={datosCliente} />
 				</section>
 			</div>
 		</div>
